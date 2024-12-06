@@ -1,4 +1,7 @@
 import Image from "next/image";
+import Modal from "@/components/modal/modal-popups";
+import DashboardModalPopup from "@/app/dashboard-modal/page";
+import { useState } from "react";
 
 export default function TableSemuaDebitur() {
     const debiturData = [
@@ -22,7 +25,7 @@ export default function TableSemuaDebitur() {
             id: 3,
             name: "Putri",
             profileImg: "/images/profile-3.jpg",
-            skorKredit: "Kol-2C",
+            skorKredit: "Kol-2A",
             jatuhTempo: "2024/12/30",
             alamat: "Jl. Example No. 456, Bandung",
         },
@@ -30,11 +33,16 @@ export default function TableSemuaDebitur() {
             id: 4,
             name: "Angelina",
             profileImg: "/images/profile-4.jpg",
-            skorKredit: "Kol-2C",
+            skorKredit: "Kol-2A",
             jatuhTempo: "2024/12/30",
             alamat: "Jl. Example No. 456, Bandung",
         },
     ];
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    function openModal(){
+        setIsModalOpen(true)
+    }
 
     return (
         <div className="w-full">
@@ -74,7 +82,7 @@ export default function TableSemuaDebitur() {
                                     <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.jatuhTempo}</td>
                                     <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.alamat}</td>
                                     <td className="py-2 px-4 text-sm text-gray-700 border-y border-r rounded-r-xl">
-                                        <button className="bg-blue-500 text-white text-sm font-medium py-2 px-4 rounded-lg focus:outline-none hover:bg-blue-700">
+                                        <button onClick={openModal} className="bg-blue-500 text-white text-sm font-medium py-2 px-4 rounded-lg focus:outline-none hover:bg-blue-700">
                                             Reminder
                                         </button>
                                     </td>
@@ -84,6 +92,9 @@ export default function TableSemuaDebitur() {
                     </table>
                 </div>
             </div>
+            {
+                isModalOpen ? <DashboardModalPopup isModalOpen={isModalOpen} onCloseModal={setIsModalOpen}/> : null
+            }
         </div>
     );
 }    
