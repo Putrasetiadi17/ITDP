@@ -1,20 +1,148 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import Modal from "@/components/modal/modal-popups";
 
-export default function DashboardModalPopup(){
-    const [isModalOpen, setIsModalOpen] = useState(false);
+interface DashboardModalPopupProps {
+    isModalOpen: boolean;
+    onCloseModal: Function;
+}
 
-    return(
-        <div>
-            <button onClick={() => setIsModalOpen(true)} className="bg-blue-500 text-white px-4 py-2 rounded-md">Open Modal</button>
-                
-                <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-                    <h2 className="text-lg font-bold mb-4">Reminder</h2>
-                    <p className="text-gray-700">Modal Testing Nih</p>
-                    <button onClick={() => setIsModalOpen(false)} className="mt-4 bg-red-500 text-white px-4 py-2 rounded-md">
-                        Close
+export default function DashboardModalPopup(props: DashboardModalPopupProps) {
+    const [nasabahStatus, setNasabahStatus] = useState("");
+    const [pertimbangan, setPertimbangan] = useState("");
+
+    function onClose() {
+        props.onCloseModal(false);
+    }
+
+    return (
+        <Modal onClose={onClose}>
+            <div className="flex flex-col h-full gap-4">
+                <div className="w-full">
+                    <h2 className="text-lg font-bold mb-4">Tambah Eksekusi Penagihan</h2>
+                </div>
+                <div className="h-full">
+                    <div className="grid grid-cols-2 gap-4">
+                        <div className="flex flex-col gap-3">
+                            <p>Nama Debitur</p>
+                            <input
+                                type="text"
+                                disabled
+                                placeholder="Joko"
+                                className="border px-6 py-2 w-full rounded-[12px]"
+                            />
+                        </div>
+                        <div className="flex flex-col gap-3">
+                            <p>Nama Account Officer</p>
+                            <input
+                                type="text"
+                                disabled
+                                placeholder="Priono"
+                                className="border px-6 py-2 w-full rounded-[12px]"
+                            />
+                        </div>
+                        <div className="flex flex-col gap-3">
+                            <p>Segmen</p>
+                            <input
+                                type="text"
+                                disabled
+                                placeholder="UMKM"
+                                className="border px-6 py-2 w-full rounded-[12px]"
+                            />
+                        </div>
+                        <div className="flex flex-col gap-3">
+                            <p>Kualitas Kredit</p>
+                            <input
+                                type="text"
+                                disabled
+                                placeholder="Kol-2B"
+                                className="border px-6 py-2 w-full rounded-[12px]"
+                            />
+                        </div>
+                        <div className="flex flex-col gap-3">
+                            <p>Tanggal Cair</p>
+                            <input
+                                type="text"
+                                disabled
+                                placeholder="25/10/2024"
+                                className="border px-6 py-2 w-full rounded-[12px]"
+                            />
+                        </div>
+                        <div className="flex flex-col gap-3">
+                            <p>Tanggal Jatuh Tempo</p>
+                            <input
+                                type="text"
+                                disabled
+                                placeholder="01/11/2024"
+                                className="border px-6 py-2 w-full rounded-[12px]"
+                            />
+                        </div>
+                        <div className="flex flex-col gap-3">
+                            <p>Tanggal Pembayaran</p>
+                            <input
+                                type="date"
+                                className="border px-6 py-2 w-full rounded-[12px]"
+                            />
+                        </div>
+                        <div className="flex flex-col gap-3">
+                            <p>Tanggal Lunas</p>
+                            <input
+                                type="text"
+                                disabled
+                                placeholder="31/12/2024"
+                                className="border px-6 py-2 w-full rounded-[12px]"
+                            />
+                        </div>
+                        <div className="flex flex-col gap-3">
+                            <p>Status Nasabah</p>
+                            <select
+                                value={nasabahStatus}
+                                onChange={(e) => setNasabahStatus(e.target.value)}
+                                className="border px-6 py-2 w-full rounded-[12px]"
+                            >
+                                <option value="" disabled>
+                                    Pilih Salah Satu Status
+                                </option>
+                                <option value="Tahap Penawaran">Tahap Penawaran</option>
+                                <option value="Tidak diteruskan Karena Pertimbangan bjb">Tidak diteruskan Karena Pertimbangan bjb</option>
+                                <option value="Sedang Memenuhi Berkas/Persyaratan">Sedang Memenuhi Berkas/Persyaratan</option>
+                                <option value="Closing">Closing</option>
+                                <option value="Tidak Bayar">Tidak Bayar</option>
+                            </select>
+                        </div>
+                        <div className="flex flex-col gap-3">
+                            <p>Pertimbangan</p>
+                            <select
+                                value={pertimbangan}
+                                onChange={(e) => setPertimbangan(e.target.value)}
+                                className="border px-6 py-2 w-full rounded-[12px]"
+                            >
+                                <option value="" disabled>
+                                    Pilih Salah Satu Pertimbangan
+                                </option>
+                                <option value="Mengunjungi Tempat Tinggal Nasabah">Mengunjungi Tempat Tinggal Nasabah</option>
+                                <option value="Tidak diteruskan Karena Pertimbangan bjb">Tidak diteruskan Karena Pertimbangan bjb</option>
+                                <option value="Sedang Memenuhi Berkas/Persyaratan">Sedang Memenuhi Berkas/Persyaratan</option>
+                                <option value="Sudah Bayar">Sudah Bayar</option>
+                                <option value="Sudah Bayar">Keadaaan Ekonomi atau Force Majeure</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div className="flex justify-end gap-4">
+                    <button
+                        onClick={onClose}
+                        className="mt-4 bg-red-500 text-white px-4 py-2 rounded-md w-[95px]"
+                    >
+                        Batal
                     </button>
-                </Modal>
-        </div>
-    )
+                    <button
+                        onClick={onClose}
+                        className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-md w-[95px]"
+                    >
+                        Simpan
+                    </button>
+                </div>
+            </div>
+        </Modal>
+    );
 }
