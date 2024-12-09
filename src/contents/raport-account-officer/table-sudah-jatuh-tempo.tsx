@@ -3,7 +3,7 @@ import Modal from "@/components/modal/modal-popups";
 import DashboardModalPopup from "@/app/dashboard-modal/page";
 import { useState } from "react";
 
-export default function TableSemuaDebitur() {
+export default function TableSudahJatuhTempo() {
     const debiturData = [
         {
             id: 1,
