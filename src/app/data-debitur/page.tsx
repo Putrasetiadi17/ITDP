@@ -1,7 +1,7 @@
 'use client'
 
-import TableSemuaDebitur from "@/contents/raport-account-officer/table-semua-debitur";
-import TableTelatBayar from "@/contents/raport-account-officer/table-telat-bayar";
+import TableSemuaDebitur from "@/contents/raport-account-officer/table-akan-jatuh-tempo";
+import TableTelatBayar from "@/contents/raport-account-officer/table-sudah-jatuh-tempo";
 import DashboardLayout from "@/layouts/dashboard-layout";
 import { useState } from "react";
 import { SideBarMenuNav } from "@/constants/navigator";

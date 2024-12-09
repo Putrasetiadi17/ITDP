@@ -102,11 +102,10 @@ export default function DashboardModalPopup(props: DashboardModalPopupProps) {
                                 <option value="" disabled>
                                     Pilih Salah Satu Status
                                 </option>
-                                <option value="Tahap Penawaran">Tahap Penawaran</option>
-                                <option value="Tidak diteruskan Karena Pertimbangan bjb">Tidak diteruskan Karena Pertimbangan bjb</option>
-                                <option value="Sedang Memenuhi Berkas/Persyaratan">Sedang Memenuhi Berkas/Persyaratan</option>
-                                <option value="Closing">Closing</option>
-                                <option value="Tidak Bayar">Tidak Bayar</option>
+                                <option value="Mengunjungi Tempat Tinggal Nasabah">Tahap Pengingat</option>
+                                <option value="Tidak diteruskan Karena Pertimbangan bjb">Tahap Penagihan</option>
+                                <option value="Sedang Memenuhi Berkas/Persyaratan">Closing</option>
+                                <option value="Sudah Bayar">Tidak Bayar</option>
                             </select>
                         </div>
                         <div className="flex flex-col gap-3">
@@ -119,11 +118,10 @@ export default function DashboardModalPopup(props: DashboardModalPopupProps) {
                                 <option value="" disabled>
                                     Pilih Salah Satu Pertimbangan
                                 </option>
-                                <option value="Mengunjungi Tempat Tinggal Nasabah">Mengunjungi Tempat Tinggal Nasabah</option>
-                                <option value="Tidak diteruskan Karena Pertimbangan bjb">Tidak diteruskan Karena Pertimbangan bjb</option>
-                                <option value="Sedang Memenuhi Berkas/Persyaratan">Sedang Memenuhi Berkas/Persyaratan</option>
-                                <option value="Sudah Bayar">Sudah Bayar</option>
-                                <option value="Sudah Bayar">Keadaaan Ekonomi atau Force Majeure</option>
+                                <option value="Mengunjungi Tempat Tinggal Nasabah">Tahap Pengingat</option>
+                                <option value="Tidak diteruskan Karena Pertimbangan bjb">Tahap Penagihan</option>
+                                <option value="Sedang Memenuhi Berkas/Persyaratan">Closing</option>
+                                <option value="Sudah Bayar">Tidak Bayar</option>
                             </select>
                         </div>
                     </div>

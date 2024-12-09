@@ -7,9 +7,10 @@ import { RiProgress2Line } from "react-icons/ri";
 import PieChartComponent from "@/components/charts/piechart";
 import { SideBarMenuNav } from "@/constants/navigator";
 import { BreadcrumbItem } from "@/components/breadcrumb/breadcrumbs";
-import TableSemuaDebitur from "@/contents/raport-account-officer/table-semua-debitur";
-import TableTelatBayar from "@/contents/raport-account-officer/table-telat-bayar";
+import TableSemuaDebitur from "@/contents/raport-account-officer/table-akan-jatuh-tempo";
+import TableTelatBayar from "@/contents/raport-account-officer/table-sudah-jatuh-tempo";
 import { use, useState } from "react"
+import TableAkanJatuhTempo from "@/contents/raport-account-officer/table-akan-jatuh-tempo";
 
 export default function Dashboard() {
     const [selectedTab, setSelectedTab] = useState(0)
@@ -129,14 +130,14 @@ export default function Dashboard() {
                         </h2>
                     </div>
                     <div className="flex gap-6 pb-6">
-                        <button onClick={onCLickSemuaDebitur} className={selectedTab == 0 ? "text-blue-600" : "text-gray-400"}>Semua Debitur</button>
-                        <button onClick={onCLickTelatBayar} className={selectedTab == 1 ? "text-blue-600" : "text-gray-400"}>Debitur Telat Bayar</button>
+                        <button onClick={onCLickSemuaDebitur} className={selectedTab == 0 ? "text-blue-600" : "text-gray-400"}>Akan Jatuh Tempo</button>
+                        <button onClick={onCLickTelatBayar} className={selectedTab == 1 ? "text-blue-600" : "text-gray-400"}>Sudah Jatuh Tempo</button>
                 </div>
 
                 {/* Tabel Informasi Debitur */}
                 {
                     (selectedTab == 0) && (
-                        <TableSemuaDebitur/>
+                        <TableAkanJatuhTempo/>
                     )
                 }
                 {
