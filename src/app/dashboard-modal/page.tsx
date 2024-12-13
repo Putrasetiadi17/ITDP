@@ -251,15 +251,15 @@ export default function DashboardModalPopup(props: DashboardModalPopupProps) {
             </Modal>
             {
                 isCloseModal && (
-                    <Modal onClose={onClose} className="w-[40vw] h-[60vh]">
+                    <Modal onClose={onClose} className="w-[42vw] h-[50vh]">
                         <div className="flex flex-col items-center justify-center h-full gap-8 p-20">
                             <div className="flex flex-col items-center">
-                                <IoWarningOutline size={95} className="text-red-600"/>
+                                <IoWarningOutline size={65} className="text-red-600"/>
                                 <h2>Yakin ingin membatalkan proses eksekusi</h2>
                             </div>
-                            <div className="flex flex-col gap-4 w-full">
-                                <button className="bg-blue-500 text-white px-4 py-2 rounded-md w-[95px] hover:bg-blue-600 w-full" onClick={onCloseModalClose}>Tidak</button>
-                                <button className="border border-red-600 text-red-600 px-4 py-2 rounded-md w-[95px] hover:bg-red-600 hover:text-white w-full" onClick={onConfirmModalClose}>
+                            <div className="flex flex-col gap-4 w-[400px] items-center">
+                                <button className="bg-blue-500 text-white px-4 py-2 rounded-md w-[95px] hover:bg-blue-600 w-[350px]" onClick={onCloseModalClose}>Tidak</button>
+                                <button className="border border-red-600 text-red-600 px-4 py-2 rounded-md w-[95px] hover:bg-red-600 hover:text-white w-[350px]" onClick={onConfirmModalClose}>
                                     Ya</button>
                             </div>
                         </div>
