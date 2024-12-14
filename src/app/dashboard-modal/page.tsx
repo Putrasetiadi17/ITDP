@@ -236,13 +236,13 @@ export default function DashboardModalPopup(props: DashboardModalPopupProps) {
                     <div className="flex justify-end gap-4">
                         <button
                             onClick={onClose}
-                            className="mt-4 bg-red-500 text-white px-4 py-2 rounded-md w-[95px]"
+                            className="mt-4 text-red-700 px-4 py-2 rounded-md w-[90px] hover:bg-red-600 w-[300px] border border-red-600 hover:text-white"
                         >
                             Batal
                         </button>
                         <button
                             onClick={onSave}
-                            className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-md w-[95px]"
+                            className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-md w-[90px] hover:bg-blue-600 w-[300px]"
                         >
                             Simpan
                         </button>
