@@ -251,10 +251,10 @@ export default function DashboardModalPopup(props: DashboardModalPopupProps) {
             </Modal>
             {
                 isCloseModal && (
-                    <Modal onClose={onClose} className="w-[45vw] h-[50vh]">
+                    <Modal onClose={onClose}>
                         <div className="flex flex-col items-center justify-center h-full gap-8 p-20">
                             <div className="flex flex-col items-center">
-                                <IoWarningOutline size={95} className="text-red-600"/>
+                                <IoWarningOutline size={150} className="text-red-600"/>
                                 <h2>Yakin ingin membatalkan proses eksekusi</h2>
                             </div>
                             <div className="flex flex-col gap-4 w-[400px] items-center">
