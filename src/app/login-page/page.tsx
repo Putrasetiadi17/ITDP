@@ -19,7 +19,7 @@ export default function LoginPage() {
 
             {/* Bagian Kanan */}
             <div className="w-1/2 bg-gray-100 flex items-center justify-center">
-                <div className="w-full max-w-md p-8 bg-white shadow-lg rounded-[28px]">
+                <div className="w-full max-w-md p-8 bg-white shadow-lg rounded-[22px]">
                     {/* Gambar */}
                     <div className="flex justify-center mb-4">
                         <Image

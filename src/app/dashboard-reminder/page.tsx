@@ -11,6 +11,7 @@ import TableSemuaDebitur from "@/contents/raport-account-officer/table-akan-jatu
 import TableTelatBayar from "@/contents/raport-account-officer/table-sudah-jatuh-tempo";
 import { use, useState } from "react"
 import TableAkanJatuhTempo from "@/contents/raport-account-officer/table-akan-jatuh-tempo";
+import TableSudahJatuhTempo from "@/contents/raport-account-officer/table-sudah-jatuh-tempo";
 
 export default function Dashboard() {
     const [selectedTab, setSelectedTab] = useState(0)
@@ -142,7 +143,7 @@ export default function Dashboard() {
                 }
                 {
                     (selectedTab == 1) && (
-                        <TableTelatBayar/>
+                        <TableSudahJatuhTempo/>
                     )
                 }
                 </div>
