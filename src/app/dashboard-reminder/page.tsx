@@ -103,6 +103,13 @@ export default function Dashboard() {
                                 <p className="text-xs font-medium text-gray-600">Closing</p>
                             </div>
                         </div>
+                        <div className="flex flex-col w-[2px] h-[60%] bg-gray-100"></div>
+                            <div className="pt-4">
+                                <div className="flex flex-col">
+                                <span className="text-3xl font-bold">2</span>
+                                <p className="text-xs font-medium text-gray-600">Closing</p>
+                            </div>
+                        </div>
                         </div>
                     </div>
                     </div>
