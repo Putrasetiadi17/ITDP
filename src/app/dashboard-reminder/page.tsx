@@ -85,14 +85,14 @@ export default function Dashboard() {
                             <div className="pt-4">
                                     <div className="flex flex-col">
                                         <span className="text-3xl font-bold">10</span>
-                                        <p className="text-xs font-medium text-gray-600">Terbayar</p>
+                                        <p className="text-xs font-medium text-gray-600">Tahap Pengingat</p>
                                     </div>
                             </div>
                             <div className="w-[2px] h-[60%] bg-gray-100"></div>
                                 <div className="pt-4">
                                     <div className="flex flex-col">
                                         <span className="text-3xl font-bold">1</span>
-                                         <p className="text-xs font-medium text-gray-600">Belum Terbayar</p>
+                                         <p className="text-xs font-medium text-gray-600">Tahap Penagihan</p>
                                     </div>
                                 </div>
                             
@@ -100,7 +100,7 @@ export default function Dashboard() {
                             <div className="pt-4">
                                 <div className="flex flex-col">
                                 <span className="text-3xl font-bold">2</span>
-                                <p className="text-xs font-medium text-gray-600">Reminded</p>
+                                <p className="text-xs font-medium text-gray-600">Closing</p>
                             </div>
                         </div>
                         </div>
