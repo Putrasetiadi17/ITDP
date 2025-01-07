@@ -7,9 +7,10 @@ interface PieChartComponent {
 
 export default function PieChartComponent(props: PieChartComponent) {
   const data = [
-    { id: 0, value: 10, label: "Terbayar" },
-    { id: 1, value: 10, label: "Belum Bayar" },
-    { id: 2, value: 80, label: "Reminded" },
+    { id: 0, value: 10, label: "Tahap Pengingat" },
+    { id: 1, value: 10, label: "Tahap Penagihan" },
+    { id: 2, value: 80, label: "Closing" },
+    { id: 3, value: 70, label: "Tidak Bayar"}
   ];
 
   // Hitung total nilai

@@ -9,7 +9,7 @@ export default function TableRaportAccountOfficer() {
             skorKredit: "Kol-2B",
             segmen: "UMKM",
             statusNasabah: "Tahap Pengingat",
-            pertimbangan: "Mengirimkan pesan pengingat melalui telepon atau SMS",
+            pertimbangan: "Mengirimkan pesan pengingat melalui telepon",
             accountOfficer: "Priono",
             jatuhTempo: "01/11/2024",
         },

@@ -16,8 +16,8 @@ export default function DashboardModalPopup(props: DashboardModalPopupProps) {
     ]
 
     const optionsStatusPertimbangan = [
-        "Mengirimkan pesan pengingat kepada nasabah melalui telepon atau SMS",
-        "Mengirimkan pesan pengingat kepada nasabah melalui Whatsapp dan media sosial",
+        "Mengirimkan pesan pengingat kepada nasabah melalui telepon",
+        "Mengirimkan pesan pengingat kepada nasabah melalui Whatsapp",
     ]
 
     const optionsStatusPertimbangan1 = [
