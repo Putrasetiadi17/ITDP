@@ -1,7 +1,6 @@
 import { JatuhTempoModel } from "@/models/jatuh-tempo-model";
 import { TotalDebiturModel } from "@/models/total-debitur";
 import api from "@/services/api";
-import { useSvgRef } from "@mui/x-charts";
 import { useCookies } from "next-client-cookies";
 import { useEffect, useState } from "react";
 

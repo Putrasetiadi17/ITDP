@@ -1,4 +1,8 @@
+'use client'
+
 import Image from "next/image";
+import { useHistoryDebitur } from "@/hooks/useHistoryDebitur";
+import { HistoryDebiturModels } from "@/models/history-debitur-model";
 
 export default function TableRaportAccountOfficer() {
     const historyDataDebitur = [
@@ -15,6 +19,9 @@ export default function TableRaportAccountOfficer() {
         },
     ];
 
+    //fecth history debitur
+    const {historyDebitur, loading, error} = useHistoryDebitur()
+
     return (
         <div className="container mx-auto w-full">
             {/* Header */}
@@ -30,34 +37,36 @@ export default function TableRaportAccountOfficer() {
                                 <tr className="text-left">
                                     <th className="py-2 px-4 text-sm font-bold text-gray-700 rounded-l-lg">Debitur</th>
                                     <th className="py-2 px-4 text-sm font-bold text-gray-700">Skor Kredit</th>
-                                    <th className="py-2 px-4 text-sm font-bold text-gray-700">Segmen</th>
+                                    <th className="py-2 px-4 text-sm font-bold text-gray-700">Angsuran</th>
+                                    <th className="py-2 px-4 text-sm font-bold text-gray-700">Bunga</th>
                                     <th className="py-2 px-4 text-sm font-bold text-gray-700">Status Nasabah</th>
                                     <th className="py-2 px-4 text-sm font-bold text-gray-700">Pertimbangan</th>
-                                    <th className="py-2 px-4 text-sm font-bold text-gray-700">AO</th>
+                                    <th className="py-2 px-4 text-sm font-bold text-gray-700">Cabang</th>
                                     <th className="py-2 px-4 text-sm font-bold text-gray-700 rounded-r-lg">Jatuh Tempo</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {historyDataDebitur.map((debitur) => (
+                                {historyDebitur?.map((debitur) => (
                                     <tr key={debitur.id} className="border-b rounded-lg">
                                         <td className="py-2 px-4 text-sm text-gray-700 border-y border-l rounded-l-xl">
                                             <div className="flex items-center gap-4">
                                                 <Image
-                                                    src={debitur.profileImg}
-                                                    alt={`${debitur.name} Profile`}
+                                                    src= "/images/profile-1.jpg"
+                                                    alt= "Name Testing"
                                                     width={30}
                                                     height={30}
                                                     className="rounded-full"
                                                 />
-                                                <span>{debitur.name}</span>
+                                                <span>Name Testing</span>
                                             </div>
                                         </td>
-                                        <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.skorKredit}</td>
-                                        <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.segmen}</td>
-                                        <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.statusNasabah}</td>
-                                        <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.pertimbangan}</td>
-                                        <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.accountOfficer}</td>
-                                        <td className="py-2 px-4 text-sm text-gray-700 border-y border-r rounded-r-xl">{debitur.jatuhTempo}</td>
+                                        <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.collect}</td>
+                                        <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.total_angsuran}</td>
+                                        <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.interest}</td>
+                                        <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.status}</td>
+                                        <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.officer_id}</td>
+                                        <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.id_cabang}</td>
+                                        <td className="py-2 px-4 text-sm text-gray-700 border-y border-r rounded-r-xl">{debitur.tanggal_cair}</td>
                                     </tr>
                                 ))}
                             </tbody>
