@@ -7,11 +7,11 @@ import { RiProgress2Line } from "react-icons/ri";
 import PieChartComponent from "@/components/charts/piechart";
 import { SideBarMenuNav } from "@/constants/navigator";
 import { BreadcrumbItem } from "@/components/breadcrumb/breadcrumbs";
-import TableSemuaDebitur from "@/contents/raport-account-officer/table-akan-jatuh-tempo";
-import TableTelatBayar from "@/contents/raport-account-officer/table-sudah-jatuh-tempo";
-import { use, useState } from "react"
+import { useState } from "react"
 import TableAkanJatuhTempo from "@/contents/raport-account-officer/table-akan-jatuh-tempo";
 import TableSudahJatuhTempo from "@/contents/raport-account-officer/table-sudah-jatuh-tempo";
+import { useStatusPenagihan } from "@/hooks/useStatusPenagihan";
+import { useTotalDebitur } from "@/hooks/useTotalDebitur";
 
 export default function Dashboard() {
     const [selectedTab, setSelectedTab] = useState(0)
@@ -27,6 +27,14 @@ export default function Dashboard() {
         {label: SideBarMenuNav[index].name},
         {label: SideBarMenuNav[index].subMenu[0].name, path: SideBarMenuNav[index].subMenu[0].ref},
     ] as BreadcrumbItem[]
+
+    const {
+        statuspenagihan
+    } = useStatusPenagihan()
+
+    const {
+        totaldebitur
+    } = useTotalDebitur()
 
     return (
         <DashboardLayout label="Testing" bcItems={bcItems}>
@@ -46,7 +54,7 @@ export default function Dashboard() {
                                 </div>
                                 <div className="flex items-center space-x-2">
                                     <h1 className="text-sm font-medium text-gray-600">Total Debitur</h1>
-                                    <span className="text-xl font-bold text-gray-800">8</span>
+                                    <span className="text-xl font-bold text-gray-800">{totaldebitur?.all_deb}</span>
                                 </div>
                             </div>
                         </div>
@@ -55,14 +63,14 @@ export default function Dashboard() {
                             <div className="flex justify-between items-center w-full h-full ">
                                 <div className="pt-4">
                                     <div className="flex flex-col">
-                                        <span className="text-3xl font-bold">4</span>
+                                        <span className="text-3xl font-bold">{(totaldebitur?.all_deb || 0) - (totaldebitur?.all_jt || 0)}</span>
                                         <p className="text-xs font-medium text-gray-600">Yang Akan Jatuh Tempo</p>
                                     </div>
                                 </div>
-                                <div className="w-[2px] h-[60%] bg-gray-100"></div>
+                                <div className="w-[2px] h-[60%] bg-gray-100 mx-3"></div>
                                 <div className="pt-4">
                                     <div className="flex flex-col">
-                                    <span className="text-3xl font-bold">4</span>
+                                    <span className="text-3xl font-bold">{totaldebitur?.all_jt }</span>
                                     <p className="text-xs font-medium text-gray-600">Jatuh Tempo</p>
                                 </div>
                             </div>
@@ -83,33 +91,32 @@ export default function Dashboard() {
                     <div className="pt-4 flex items-center h-full w-full">
                         <div className="flex justify-between items-center w-full h-full">
                             <div className="pt-4">
-                                    <div className="flex flex-col">
-                                        <span className="text-3xl font-bold">10</span>
-                                        <p className="text-xs font-medium text-gray-600">Tahap Pengingat</p>
-                                    </div>
+                                <div className="flex flex-col">
+                                    <span className="text-3xl font-bold">{statuspenagihan?.tahap_pengingat}</span>
+                                    <p className="text-xs font-medium text-gray-600">Tahap Pengingat</p>
+                                </div>
                             </div>
-                            <div className="w-[2px] h-[60%] bg-gray-100"></div>
+                            <div className="w-[2px] h-[60%] bg-gray-100 mx-3"></div>
+                            <div className="pt-4">
+                                <div className="flex flex-col">
+                                    <span className="text-3xl font-bold">{statuspenagihan?.tahap_penagihan}</span>
+                                    <p className="text-xs font-medium text-gray-600">Tahap Penagihan</p>
+                                </div>
+                            </div>
+                            <div className="w-[2px] h-[60%] bg-gray-100 mx-3"></div>
+                            <div className="pt-4">
+                                <div className="flex flex-col">
+                                    <span className="text-3xl font-bold">{statuspenagihan?.closing}</span>
+                                    <p className="text-xs font-medium text-gray-600">Closing</p>
+                                </div>
+                            </div>
+                            <div className="w-[2px] h-[60%] bg-gray-100 mx-3"></div>
                                 <div className="pt-4">
                                     <div className="flex flex-col">
-                                        <span className="text-3xl font-bold">1</span>
-                                         <p className="text-xs font-medium text-gray-600">Tahap Penagihan</p>
-                                    </div>
+                                    <span className="text-3xl font-bold">{statuspenagihan?.tidak_bayar}</span>
+                                    <p className="text-xs font-medium text-gray-600">Tidak Bayar</p>
                                 </div>
-                            
-                        <div className="w-[2px] h-[60%] bg-gray-100"></div>
-                            <div className="pt-4">
-                                <div className="flex flex-col">
-                                <span className="text-3xl font-bold">2</span>
-                                <p className="text-xs font-medium text-gray-600">Closing</p>
                             </div>
-                        </div>
-                        <div className="flex flex-col w-[2px] h-[60%] bg-gray-100"></div>
-                            <div className="pt-4">
-                                <div className="flex flex-col">
-                                <span className="text-3xl font-bold">2</span>
-                                <p className="text-xs font-medium text-gray-600">Closing</p>
-                            </div>
-                        </div>
                         </div>
                     </div>
                     </div>

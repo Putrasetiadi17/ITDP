@@ -1,14 +1,31 @@
 'use client'
 
+import { useAuth } from "@/hooks/useAuth";
 import Image from "next/image";
-import { useState } from "react";
+import { ChangeEventHandler, use, useState } from "react";
 
 export default function LoginPage() {
     const [showPassword, setShowPassword] = useState(false);
+    const {login, response, loading, error} = useAuth()
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
+
+    const [username, setUsername] = useState<string>("");
+    const [password, setPassword] = useState<string>("");
+
+    function onChangeUsername(e: React.ChangeEvent<HTMLInputElement>){
+        setUsername(e.target.value)
+    }
+
+    function onChangePassword(e: React.ChangeEvent<HTMLInputElement>){
+        setPassword(e.target.value)
+    }
+
+    async function onSubmit(){
+        await login(username, password)
+    }
 
     return (
         <div className="flex h-screen">
@@ -40,6 +57,8 @@ export default function LoginPage() {
                             Username
                         </label>
                         <input
+                            value={username}
+                            onChange={onChangeUsername}
                             type="text"
                             id="username"
                             name="username"
@@ -54,6 +73,8 @@ export default function LoginPage() {
                             Password
                         </label>
                         <input
+                            value={password}
+                            onChange={onChangePassword}
                             type={showPassword ? "text" : "password"}
                             id="password"
                             name="password"
@@ -118,7 +139,7 @@ export default function LoginPage() {
 
                     {/* Tombol Login */}
                     <div>
-                        <button className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition duration-300">
+                        <button className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition duration-300" onClick={onSubmit}>
                             Login
                         </button>
                     </div>

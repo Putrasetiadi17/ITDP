@@ -1,10 +1,12 @@
-import React, {useState } from "react";
+import React, {ChangeEvent, useState } from "react";
 import Modal from "@/components/modal/modal-popups";
 import { IoWarningOutline } from "react-icons/io5";
+import { JatuhTempoModel } from "@/models/jatuh-tempo-model";
 
 interface DashboardModalPopupProps {
     isModalOpen: boolean;
     onCloseModal: Function;
+    selectedJatuhTempo: JatuhTempoModel | null
 }
 
 export default function DashboardModalPopup(props: DashboardModalPopupProps) {
@@ -102,6 +104,22 @@ export default function DashboardModalPopup(props: DashboardModalPopupProps) {
         setIsCloseModal(false)
     }
 
+    //input state
+    const [deskripsi, setDeskripsi] = useState("")
+    function onChangeDeskripsi(e: ChangeEvent<HTMLInputElement>){
+        setDeskripsi(e.target.value)
+    }
+
+    //Function state for uploaded file
+    const [uploadedFile, setUploadedFile] = useState<File | null>(null);
+
+    //Handler for file input change
+    function onFileChange(event: ChangeEvent<HTMLInputElement>){
+        if (event.target.files && event.target.files.length > 0){
+            setUploadedFile(event.target.files[0])
+        }
+    }
+
     return (
         <>
             <Modal onClose={onClose}>
@@ -109,14 +127,14 @@ export default function DashboardModalPopup(props: DashboardModalPopupProps) {
                     <div className="w-full">
                         <h2 className="text-lg font-bold mb-4">Tambah Eksekusi Penagihan</h2>
                     </div>
-                    <div className="h-full">
+                    <div className="h-full overflow-y-auto">
                         <div className="grid grid-cols-2 gap-4">
                             <div className="flex flex-col gap-3">
                                 <p>Nama Debitur</p>
                                 <input
                                     type="text"
                                     disabled
-                                    placeholder="Joko"
+                                    placeholder={props.selectedJatuhTempo?.debitur.nama}
                                     className="border px-6 py-2 w-full rounded-[12px]"
                                 />
                             </div>
@@ -143,7 +161,7 @@ export default function DashboardModalPopup(props: DashboardModalPopupProps) {
                                 <input
                                     type="text"
                                     disabled
-                                    placeholder="Kol-2B"
+                                    placeholder={props.selectedJatuhTempo?.collect.toString()}
                                     className="border px-6 py-2 w-full rounded-[12px]"
                                 />
                             </div>
@@ -152,7 +170,7 @@ export default function DashboardModalPopup(props: DashboardModalPopupProps) {
                                 <input
                                     type="text"
                                     disabled
-                                    placeholder="25/10/2024"
+                                    placeholder={props.selectedJatuhTempo?.tanggal_cair}
                                     className="border px-6 py-2 w-full rounded-[12px]"
                                 />
                             </div>
@@ -161,7 +179,34 @@ export default function DashboardModalPopup(props: DashboardModalPopupProps) {
                                 <input
                                     type="text"
                                     disabled
-                                    placeholder="01/11/2024"
+                                    placeholder={props.selectedJatuhTempo?.tanggal_jatuh_tempo}
+                                    className="border px-6 py-2 w-full rounded-[12px]"
+                                />
+                            </div>
+                            <div className="flex flex-col gap-3">
+                                <p>Tanggal Lunas</p>
+                                <input
+                                    type="text"
+                                    disabled
+                                    placeholder={props.selectedJatuhTempo?.tanggal_cair}
+                                    className="border px-6 py-2 w-full rounded-[12px]"
+                                />
+                            </div>
+                            <div className="flex flex-col gap-3">
+                                <p>Outstanding</p>
+                                <input
+                                    type="text" 
+                                    disabled
+                                    placeholder={props.selectedJatuhTempo?.outstanding.toString()}
+                                    className="border px-6 py-2 w-full rounded-[12px]"
+                                />
+                            </div>
+                            <div className="flex flex-col gap-3">
+                                <p>Interest</p>
+                                <input
+                                    type="text" 
+                                    disabled
+                                    placeholder={props.selectedJatuhTempo?.interest.toString()}
                                     className="border px-6 py-2 w-full rounded-[12px]"
                                 />
                             </div>
@@ -173,11 +218,20 @@ export default function DashboardModalPopup(props: DashboardModalPopupProps) {
                                 />
                             </div>
                             <div className="flex flex-col gap-3">
-                                <p>Tanggal Lunas</p>
+                                <p>Total Angsuran</p>
                                 <input
-                                    type="text"
+                                    type="text" 
                                     disabled
-                                    placeholder="31/12/2024"
+                                    placeholder={props.selectedJatuhTempo?.total_angsuran.toString()}
+                                    className="border px-6 py-2 w-full rounded-[12px]"
+                                />
+                            </div>
+                            <div className="flex flex-col gap-3">
+                                <p>Saldo</p>
+                                <input
+                                    type="text" 
+                                    disabled
+                                    placeholder={props.selectedJatuhTempo?.total_angsuran.toString()}
                                     className="border px-6 py-2 w-full rounded-[12px]"
                                 />
                             </div>
@@ -230,6 +284,24 @@ export default function DashboardModalPopup(props: DashboardModalPopupProps) {
                                             ))
                                         }
                                     </select>
+                            </div>
+                            <div className="flex flex-col gap-3">
+                                <p>Upload Document</p>
+                                <input 
+                                    type="file" 
+                                    className="border px-6 py-2 w-full rounded-[12px]"
+                                    onChange={onFileChange}
+                                />
+                            </div>
+                            <div className="flex flex-col gap-3">
+                                <p>Deskripsi Pesan Pengingat</p>
+                                <input
+                                    type="text" 
+                                    value={deskripsi}
+                                    placeholder="Tuliskan deskripsi disini"
+                                    className="border px-6 py-2 w-full rounded-[12px]"
+                                    onChange={onChangeDeskripsi}
+                                />
                             </div>
                         </div>
                     </div>
