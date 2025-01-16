@@ -2,6 +2,7 @@ import React, {ChangeEvent, useState } from "react";
 import Modal from "@/components/modal/modal-popups";
 import { IoWarningOutline } from "react-icons/io5";
 import { JatuhTempoModel } from "@/models/jatuh-tempo-model";
+import { useStoreHistory } from "@/hooks/useStoreHistory";
 
 interface DashboardModalPopupProps {
     isModalOpen: boolean;
@@ -111,13 +112,61 @@ export default function DashboardModalPopup(props: DashboardModalPopupProps) {
     }
 
     //Function state for uploaded file
-    const [uploadedFile, setUploadedFile] = useState<File | null>(null);
+    const [uploadedFile, setUploadedFile] = useState<any | null>(null);
 
     //Handler for file input change
     function onFileChange(event: ChangeEvent<HTMLInputElement>){
-        if (event.target.files && event.target.files.length > 0){
+        if (event.target.files && event.target.files[0]){
+            console.log(event.target.files[0])
             setUploadedFile(event.target.files[0])
         }
+    }
+
+    const [selectedTanggal, setSelectedTanggal] = useState("")
+    function onChangeTanggal(tanggal: any){
+        setSelectedTanggal(tanggal.target.value)
+    }
+
+    function searchStringInArray (str: string, strArray: string[]) {
+        for (var j=0; j<strArray.length; j++) {
+            if (strArray[j].match(str)) return j;
+        }
+        return -1;
+    }
+
+    //submit form
+    const {storeNewHistory} = useStoreHistory()
+    async function onSubmitForm(){
+        const statusPembayaran = searchStringInArray(selectedStatusNasabah, optionsStatusNasabah) +1
+        let pertimbanganId
+        switch(statusPembayaran){
+            case 1:
+                pertimbanganId = optionsStatusPertimbangan
+                break
+            case 2:
+                pertimbanganId = optionsStatusPertimbangan1
+                break
+            case 3:
+                pertimbanganId = optionsStatusPertimbangan2
+                break
+            case 4:
+                pertimbanganId = optionsStatusPertimbangan3
+                break
+            default:
+                pertimbanganId = optionsStatusPertimbangan
+        }
+        const pertimbangan = searchStringInArray(selectedStatusPertimbangan, pertimbanganId) +1
+        const formData = new FormData
+        formData.append('tanggal_pembayaran', selectedTanggal)
+        formData.append('status_pembayaran', statusPembayaran as unknown as string)
+        formData.append('pertimbangan', pertimbangan as unknown as string)
+        formData.append('deskripsi', deskripsi)
+        formData.append('file_bukti', uploadedFile as unknown as Blob)
+        // for (var pair of formData.entries()) {
+        //     console.log(pair[0]+ ', ' + pair[1]); 
+        // }
+        await storeNewHistory(props.selectedJatuhTempo?.id as string, formData)
+        onConfirmModalClose()
     }
 
     return (
@@ -211,10 +260,12 @@ export default function DashboardModalPopup(props: DashboardModalPopupProps) {
                                 />
                             </div>
                             <div className="flex flex-col gap-3">
-                                <p>Tanggal Pembayaran</p>
+                                <p>Tanggal Input</p>
                                 <input
                                     type="date"
+                                    value={selectedTanggal}
                                     className="border px-6 py-2 w-full rounded-[12px]"
+                                    onChange={onChangeTanggal}
                                 />
                             </div>
                             <div className="flex flex-col gap-3">
@@ -313,7 +364,7 @@ export default function DashboardModalPopup(props: DashboardModalPopupProps) {
                             Batal
                         </button>
                         <button
-                            onClick={onSave}
+                            onClick={onSubmitForm}
                             className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-md w-[90px] hover:bg-blue-600 w-[300px]"
                         >
                             Simpan

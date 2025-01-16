@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useHistoryDebitur } from "@/hooks/useHistoryDebitur";
-import { HistoryDebiturModels } from "@/models/history-debitur-model";
 
 export default function TableRaportAccountOfficer() {
     const historyDataDebitur = [
@@ -37,17 +36,15 @@ export default function TableRaportAccountOfficer() {
                                 <tr className="text-left">
                                     <th className="py-2 px-4 text-sm font-bold text-gray-700 rounded-l-lg">Debitur</th>
                                     <th className="py-2 px-4 text-sm font-bold text-gray-700">Skor Kredit</th>
-                                    <th className="py-2 px-4 text-sm font-bold text-gray-700">Angsuran</th>
-                                    <th className="py-2 px-4 text-sm font-bold text-gray-700">Bunga</th>
+                                    <th className="py-2 px-4 text-sm font-bold text-gray-700">Angsuran</th>                                    
                                     <th className="py-2 px-4 text-sm font-bold text-gray-700">Status Nasabah</th>
                                     <th className="py-2 px-4 text-sm font-bold text-gray-700">Pertimbangan</th>
-                                    <th className="py-2 px-4 text-sm font-bold text-gray-700">Cabang</th>
                                     <th className="py-2 px-4 text-sm font-bold text-gray-700 rounded-r-lg">Jatuh Tempo</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {historyDebitur?.map((debitur) => (
-                                    <tr key={debitur.id} className="border-b rounded-lg">
+                                {historyDebitur?.map((debitur, i) => (
+                                    <tr key={i} className="border-b rounded-lg">
                                         <td className="py-2 px-4 text-sm text-gray-700 border-y border-l rounded-l-xl">
                                             <div className="flex items-center gap-4">
                                                 <Image
@@ -62,11 +59,9 @@ export default function TableRaportAccountOfficer() {
                                         </td>
                                         <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.collect}</td>
                                         <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.total_angsuran}</td>
-                                        <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.interest}</td>
-                                        <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.status}</td>
-                                        <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.officer_id}</td>
-                                        <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.id_cabang}</td>
-                                        <td className="py-2 px-4 text-sm text-gray-700 border-y border-r rounded-r-xl">{debitur.tanggal_cair}</td>
+                                        <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.status_pembayaran}</td>
+                                        <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.pertimbangan}</td>
+                                        <td className="py-2 px-4 text-sm text-gray-700 border-y border-r rounded-r-xl">{debitur.tanggal_jatuh_tempo}</td>
                                     </tr>
                                 ))}
                             </tbody>
