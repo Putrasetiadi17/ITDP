@@ -43,7 +43,8 @@ export const SideBarMenuNav = [
         subMenu: [
             {name: "Dashboard Reminder", ref: "/dashboard-reminder"},
             // {name: "Data Debitur", ref: "/data-debitur"},
-            {name: "History Account Officer", ref: "/history-account-officer"}
+            {name: "History Account Officer", ref: "/history-account-officer"},
+            {name: "Account Maintenance", ref: "/account-maintenance"}
         ]
     },
     {
