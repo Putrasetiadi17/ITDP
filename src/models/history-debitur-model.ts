@@ -6,5 +6,7 @@ export interface HistoryDebiturModels
         tanggal_jatuh_tempo: string,
         total_angsuran: string,
         status_pembayaran: string,
-        pertimbangan: number
+        pertimbangan: number,
+        deskripsi: string,
+        tanggal_pembayaran: string
     }
