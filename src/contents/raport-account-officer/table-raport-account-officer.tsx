@@ -39,6 +39,8 @@ export default function TableRaportAccountOfficer() {
                                     <th className="py-2 px-4 text-sm font-bold text-gray-700">Angsuran</th>                                    
                                     <th className="py-2 px-4 text-sm font-bold text-gray-700">Status Nasabah</th>
                                     <th className="py-2 px-4 text-sm font-bold text-gray-700">Pertimbangan</th>
+                                    <th className="py-2 px-4 text-sm font-bold text-gray-700">Deskripsi</th>
+                                    <th className="py-2 px-4 text-sm font-bold text-gray-700">Tanggal Input</th>
                                     <th className="py-2 px-4 text-sm font-bold text-gray-700 rounded-r-lg">Jatuh Tempo</th>
                                 </tr>
                             </thead>
@@ -54,13 +56,15 @@ export default function TableRaportAccountOfficer() {
                                                     height={30}
                                                     className="rounded-full"
                                                 />
-                                                <span>Name Testing</span>
+                                                <span>{debitur.nama}</span>
                                             </div>
                                         </td>
                                         <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.collect}</td>
                                         <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.total_angsuran}</td>
                                         <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.status_pembayaran}</td>
                                         <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.pertimbangan}</td>
+                                        <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.deskripsi}</td>
+                                        <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.tanggal_pembayaran}</td>
                                         <td className="py-2 px-4 text-sm text-gray-700 border-y border-r rounded-r-xl">{debitur.tanggal_jatuh_tempo}</td>
                                     </tr>
                                 ))}

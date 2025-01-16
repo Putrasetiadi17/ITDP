@@ -4,8 +4,9 @@ import { useState } from "react";
 import { JatuhTempoModel } from "@/models/jatuh-tempo-model";
 import { useSudahJatuhTempo } from "@/hooks/useSudahJatuhTempo";
 import CircularLoading from "@/components/loading/circular-loading";
+import DashboardModalAccountMaintenancePopup from "@/app/modal-account-maintenance/page";
 
-export default function TableAccountMaintenance() {
+export default function TableHistoryAccountMaintenance() {
     const debiturData = [
         {
             id: 1,
@@ -53,7 +54,7 @@ export default function TableAccountMaintenance() {
 
     return (
         <div className="w-full">
-            <h2 className="text-xl font-semibold pb-8">Histori Pemeliharaan Kredit</h2>
+            <h2 className="text-xl font-semibold pb-8">Histori Account Maintenance</h2>
             {/* Konten Box */}
             <div className="bg-white pt-[4px] pb-[4px] px-4 rounded-[20px] shadow-md">
             {
@@ -113,7 +114,7 @@ export default function TableAccountMaintenance() {
                 }
             </div>
             {
-                isModalOpen ? <DashboardModalPopup isModalOpen={isModalOpen} onCloseModal={setIsModalOpen} selectedJatuhTempo={selectedAccountMaintenance || null}/> : null
+                isModalOpen ? <DashboardModalAccountMaintenancePopup isModalOpen={isModalOpen} onCloseModal={setIsModalOpen} selectedJatuhTempo={selectedAccountMaintenance || null}/> : null
             }
         </div>
     );
