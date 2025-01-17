@@ -1,9 +1,10 @@
 import Image from "next/image";
-import DashboardModalPopup from "@/app/dashboard-modal/page";
+import DashboardModalAccountMaintenancePopup from "@/app/modal-account-maintenance/page";
 import { useState } from "react";
 import { JatuhTempoModel } from "@/models/jatuh-tempo-model";
 import { useSudahJatuhTempo } from "@/hooks/useSudahJatuhTempo";
 import CircularLoading from "@/components/loading/circular-loading";
+import Dashboard from "@/app/dashboard/page";
 
 export default function TableAccountMaintenance() {
     const debiturData = [
@@ -113,7 +114,7 @@ export default function TableAccountMaintenance() {
                 }
             </div>
             {
-                isModalOpen ? <DashboardModalPopup isModalOpen={isModalOpen} onCloseModal={setIsModalOpen} selectedJatuhTempo={selectedAccountMaintenance || null}/> : null
+                isModalOpen ? <DashboardModalAccountMaintenancePopup isModalOpen={isModalOpen} onCloseModal={setIsModalOpen} selectedJatuhTempo={selectedAccountMaintenance || null}/> : null
             }
         </div>
     );
