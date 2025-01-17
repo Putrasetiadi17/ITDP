@@ -178,7 +178,7 @@ export default function DashboardModalPopup(props: DashboardModalPopupProps) {
                     </div>
                     <div className="h-full overflow-y-auto">
                         <div className="grid grid-cols-2 gap-4">
-                            <div className="flex flex-col gap-3">
+                            <div className="flex flex-col gap-3 text-sm">
                                 <p>Nama Debitur</p>
                                 <input
                                     type="text"
@@ -187,7 +187,7 @@ export default function DashboardModalPopup(props: DashboardModalPopupProps) {
                                     className="border px-6 py-2 w-full rounded-[12px]"
                                 />
                             </div>
-                            <div className="flex flex-col gap-3">
+                            <div className="flex flex-col gap-3 text-sm">
                                 <p>Nama Account Officer</p>
                                 <input
                                     type="text"
@@ -196,7 +196,7 @@ export default function DashboardModalPopup(props: DashboardModalPopupProps) {
                                     className="border px-6 py-2 w-full rounded-[12px]"
                                 />
                             </div>
-                            <div className="flex flex-col gap-3">
+                            <div className="flex flex-col gap-3 text-sm">
                                 <p>Segmen</p>
                                 <input
                                     type="text"
@@ -205,7 +205,7 @@ export default function DashboardModalPopup(props: DashboardModalPopupProps) {
                                     className="border px-6 py-2 w-full rounded-[12px]"
                                 />
                             </div>
-                            <div className="flex flex-col gap-3">
+                            <div className="flex flex-col gap-3 text-sm">
                                 <p>Kualitas Kredit</p>
                                 <input
                                     type="text"
@@ -214,7 +214,7 @@ export default function DashboardModalPopup(props: DashboardModalPopupProps) {
                                     className="border px-6 py-2 w-full rounded-[12px]"
                                 />
                             </div>
-                            <div className="flex flex-col gap-3">
+                            <div className="flex flex-col gap-3 text-sm">
                                 <p>Tanggal Cair</p>
                                 <input
                                     type="text"
@@ -223,7 +223,7 @@ export default function DashboardModalPopup(props: DashboardModalPopupProps) {
                                     className="border px-6 py-2 w-full rounded-[12px]"
                                 />
                             </div>
-                            <div className="flex flex-col gap-3">
+                            <div className="flex flex-col gap-3 text-sm">
                                 <p>Tanggal Jatuh Tempo</p>
                                 <input
                                     type="text"
@@ -232,7 +232,7 @@ export default function DashboardModalPopup(props: DashboardModalPopupProps) {
                                     className="border px-6 py-2 w-full rounded-[12px]"
                                 />
                             </div>
-                            <div className="flex flex-col gap-3">
+                            <div className="flex flex-col gap-3 text-sm">
                                 <p>Tanggal Lunas</p>
                                 <input
                                     type="text"
@@ -241,7 +241,7 @@ export default function DashboardModalPopup(props: DashboardModalPopupProps) {
                                     className="border px-6 py-2 w-full rounded-[12px]"
                                 />
                             </div>
-                            <div className="flex flex-col gap-3">
+                            <div className="flex flex-col gap-3 text-sm">
                                 <p>Outstanding</p>
                                 <input
                                     type="text" 
@@ -250,7 +250,7 @@ export default function DashboardModalPopup(props: DashboardModalPopupProps) {
                                     className="border px-6 py-2 w-full rounded-[12px]"
                                 />
                             </div>
-                            <div className="flex flex-col gap-3">
+                            <div className="flex flex-col gap-3 text-sm">
                                 <p>Interest</p>
                                 <input
                                     type="text" 
@@ -259,7 +259,7 @@ export default function DashboardModalPopup(props: DashboardModalPopupProps) {
                                     className="border px-6 py-2 w-full rounded-[12px]"
                                 />
                             </div>
-                            <div className="flex flex-col gap-3">
+                            <div className="flex flex-col gap-3 text-sm">
                                 <p>Tanggal Input</p>
                                 <input
                                     type="date"
@@ -268,7 +268,7 @@ export default function DashboardModalPopup(props: DashboardModalPopupProps) {
                                     onChange={onChangeTanggal}
                                 />
                             </div>
-                            <div className="flex flex-col gap-3">
+                            <div className="flex flex-col gap-3 text-sm">
                                 <p>Total Angsuran</p>
                                 <input
                                     type="text" 
@@ -277,7 +277,7 @@ export default function DashboardModalPopup(props: DashboardModalPopupProps) {
                                     className="border px-6 py-2 w-full rounded-[12px]"
                                 />
                             </div>
-                            <div className="flex flex-col gap-3">
+                            <div className="flex flex-col gap-3 text-sm">
                                 <p>Saldo</p>
                                 <input
                                     type="text" 
@@ -286,7 +286,7 @@ export default function DashboardModalPopup(props: DashboardModalPopupProps) {
                                     className="border px-6 py-2 w-full rounded-[12px]"
                                 />
                             </div>
-                            <div className="flex flex-col gap-3">
+                            <div className="flex flex-col gap-3 text-sm">
                                 <p>Status Nasabah</p>
                                 <select
                                     value={selectedStatusNasabah}
@@ -304,7 +304,7 @@ export default function DashboardModalPopup(props: DashboardModalPopupProps) {
                                     
                                 </select>
                             </div>
-                            <div className="flex flex-col gap-3">
+                            <div className="flex flex-col gap-3 text-sm">
                                 <p>Pertimbangan</p>
                                     <select
                                         value={getValueOption()}
@@ -336,7 +336,7 @@ export default function DashboardModalPopup(props: DashboardModalPopupProps) {
                                         }
                                     </select>
                             </div>
-                            <div className="flex flex-col gap-3">
+                            <div className="flex flex-col gap-3 text-sm">
                                 <p>Upload Document</p>
                                 <input 
                                     type="file" 
@@ -344,7 +344,7 @@ export default function DashboardModalPopup(props: DashboardModalPopupProps) {
                                     onChange={onFileChange}
                                 />
                             </div>
-                            <div className="flex flex-col gap-3">
+                            <div className="flex flex-col gap-3 text-sm">
                                 <p>Deskripsi Pesan Pengingat</p>
                                 <input
                                     type="text" 

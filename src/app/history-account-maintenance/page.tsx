@@ -9,7 +9,7 @@ export default function RaportAccountOfficer(){
     const index = 6
     const bcItems = [
         {label: SideBarMenuNav[index].name},
-        {label: SideBarMenuNav[index].subMenu[1].name, path: SideBarMenuNav[index].subMenu[0].ref},
+        {label: SideBarMenuNav[index].subMenu[3].name, path: SideBarMenuNav[index].subMenu[0].ref},
     ] as BreadcrumbItem[]
     
     
