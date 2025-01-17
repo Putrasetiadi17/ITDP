@@ -74,7 +74,7 @@ export default function TableAccountMaintenance() {
                                                 <th className="py-2 px-4 text-sm font-bold text-gray-700">Jatuh Tempo</th>
                                                 <th className="py-2 px-4 text-sm font-bold text-gray-700">Tanggal Cair</th>
                                                 <th className="py-2 px-4 text-sm font-bold text-gray-700">Total Pinjaman</th>
-                                                <th className="py-2 px-4 text-sm font-bold text-gray-700 rounded-r-lg">Status</th>
+                                                <th className="py-2 px-4 text-sm font-bold text-gray-700 rounded-r-lg">Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
