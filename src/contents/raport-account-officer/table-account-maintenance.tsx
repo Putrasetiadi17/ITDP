@@ -98,7 +98,7 @@ export default function TableAccountMaintenance() {
                                                     <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.interest}</td>
                                                     <td className="py-2 px-4 text-sm text-gray-700 border-y border-r rounded-r-xl">
                                                         <button onClick={()=>openModal(debitur)} className="bg-blue-500 text-white text-sm font-medium py-2 px-4 rounded-lg focus:outline-none hover:bg-blue-700">
-                                                            Edit Pipeline
+                                                            Tambah Realisasi
                                                         </button>
                                                     </td>
                                                 </tr>
