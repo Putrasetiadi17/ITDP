@@ -111,6 +111,11 @@ export default function DashboardModalAccountMaintenancePopup(props: DashboardMo
         setDeskripsi(e.target.value)
     }
 
+    const [kesepakatanAwal, setKesepakatanAwal] = useState("")
+    function onChangeKesepakatanAwal(e: ChangeEvent<HTMLInputElement>){
+        setKesepakatanAwal(e.target.value)
+    }
+
     //Function state for uploaded file
     const [uploadedFile, setUploadedFile] = useState<any | null>(null);
 
@@ -174,7 +179,7 @@ export default function DashboardModalAccountMaintenancePopup(props: DashboardMo
             <Modal onClose={onClose}>
                 <div className="flex flex-col h-full gap-4">
                     <div className="w-full">
-                        <h2 className="text-lg font-bold mb-4">Edit Formulir</h2>
+                        <h2 className="text-lg font-bold mb-4">Tambah Realisasi</h2>
                     </div>
                     <div className="h-full overflow-y-auto">
                         <div className="grid grid-cols-2 gap-4">
@@ -260,7 +265,7 @@ export default function DashboardModalAccountMaintenancePopup(props: DashboardMo
                                 />
                             </div>
                             <div className="flex flex-col gap-3 text-sm">
-                                <p>Tanggal Input</p>
+                                <p>Tanggal Kunjungan</p>
                                 <input
                                     type="date"
                                     value={selectedTanggal}
@@ -285,57 +290,26 @@ export default function DashboardModalAccountMaintenancePopup(props: DashboardMo
                                     placeholder={props.selectedJatuhTempo?.total_angsuran.toString()}
                                     className="border px-6 py-2 w-full rounded-[12px]"
                                 />
-                            </div>
+                            </div>                           
                             <div className="flex flex-col gap-3 text-sm">
-                                <p>Status Nasabah</p>
-                                <select
-                                    value={selectedStatusNasabah}
-                                    onChange={(e) => onSelectStatusNasabah(e.target.value)}
+                                <p>Kesepakatan Awal</p>
+                                <input 
+                                    type="text" 
+                                    value={kesepakatanAwal}
+                                    placeholder="Tuliskan kesepakatan awal disini"
                                     className="border px-6 py-2 w-full rounded-[12px]"
-                                >
-                                    <option value="" disabled>
-                                        Pilih Salah Satu Status
-                                    </option>
-                                    {
-                                        optionsStatusNasabah.map((opt, index) => (
-                                            <option key={index} value={opt}>{opt}</option>
-                                        ))
-                                    }
-                                    
-                                </select>
+                                    onChange={onChangeKesepakatanAwal}
+                                />
                             </div>
                             <div className="flex flex-col gap-3 text-sm">
-                                <p>Pertimbangan</p>
-                                    <select
-                                        value={getValueOption()}
-                                        onChange={(e) => onSelectPertimbangan(e.target.value)}
-                                        className="border px-6 py-2 w-full rounded-[12px]"
-                                    >
-                                        <option value="" disabled>
-                                            Pilih Salah Satu Pertimbangan
-                                        </option>
-                                        {
-                                            selectedStatusNasabah == "Tahap Pengingat" && optionsStatusPertimbangan.map((opt, i)=>(
-                                                <option key={i} value={opt}>{opt}</option>
-                                            ))
-                                        }
-                                        {
-                                            selectedStatusNasabah == "Tahap Penagihan" && optionsStatusPertimbangan1.map((opt, i) => (
-                                                <option key={i} value={opt}>{opt}</option>
-                                            ))
-                                        }
-                                        {
-                                            selectedStatusNasabah == "Closing" && optionsStatusPertimbangan2.map((opt, i) => (
-                                                <option key={i} value={opt}>{opt}</option>
-                                            ))
-                                        }
-                                        {
-                                            selectedStatusNasabah == "Tidak Bayar" && optionsStatusPertimbangan3.map((opt, i) => (
-                                                <option key={i} value={opt}>{opt}</option>
-                                            ))
-                                        }
-                                    </select>
-                            </div>
+                                <p>Deskripsi</p>
+                                <input
+                                    type="text" 
+                                    value={deskripsi}
+                                    placeholder="Tuliskan deskripsi disini"
+                                    className="border px-6 py-2 w-full rounded-[12px]"
+                                    onChange={onChangeDeskripsi}
+                                />
                             <div className="flex flex-col gap-3 text-sm">
                                 <p>Upload Document</p>
                                 <input 
@@ -344,15 +318,6 @@ export default function DashboardModalAccountMaintenancePopup(props: DashboardMo
                                     onChange={onFileChange}
                                 />
                             </div>
-                            <div className="flex flex-col gap-3 text-sm">
-                                <p>Deskripsi Pesan Pengingat</p>
-                                <input
-                                    type="text" 
-                                    value={deskripsi}
-                                    placeholder="Tuliskan deskripsi disini"
-                                    className="border px-6 py-2 w-full rounded-[12px]"
-                                    onChange={onChangeDeskripsi}
-                                />
                             </div>
                         </div>
                     </div>

@@ -74,7 +74,7 @@ export default function TableAkanJatuhTempo() {
                                                 <th className="py-2 px-4 text-sm font-bold text-gray-700">Interest</th>
                                                 <th className="py-2 px-4 text-sm font-bold text-gray-700">Saldo</th>
                                                 <th className="py-2 px-4 text-sm font-bold text-gray-700">Angsuran</th>
-                                                <th className="py-2 px-4 text-sm font-bold text-gray-700 rounded-r-lg">Status</th>
+                                                <th className="py-2 px-4 text-sm font-bold text-gray-700 rounded-r-lg">Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
