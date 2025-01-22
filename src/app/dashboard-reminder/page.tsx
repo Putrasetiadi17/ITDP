@@ -138,28 +138,42 @@ export default function Dashboard() {
                 </div>
 
                 {/* Section Debitur Jatuh Tempo */}
+                {
+                }
                 <div className="container mx-auto pt-8 w-full">
-                    <div className="text-xl font-semibold pb-6">
-                        <h2>Debitur Jatuh Tempo
-                            <span className="text-sm text-gray-400"> /7 hari sebelum jatuh tempo</span>
-                        </h2>
-                    </div>
-                    <div className="flex gap-6 pb-6">
-                        <button onClick={onCLickSemuaDebitur} className={selectedTab == 0 ? "text-blue-600" : "text-gray-400"}>Akan Jatuh Tempo</button>
-                        <button onClick={onCLickTelatBayar} className={selectedTab == 1 ? "text-blue-600" : "text-gray-400"}>Sudah Jatuh Tempo</button>
+                <div className="text-xl font-semibold pb-6">
+                    <h2>
+                    Debitur Jatuh Tempo
+                    <span className="text-sm text-gray-400"> /7 hari sebelum jatuh tempo</span>
+                    </h2>
                 </div>
 
-                {/* Tabel Informasi Debitur */}
-                {
-                    (selectedTab == 0) && (
-                        <TableAkanJatuhTempo/>
-                    )
-                }
-                {
-                    (selectedTab == 1) && (
-                        <TableSudahJatuhTempo/>
-                    )
-                }
+                {/* Tabs and Tombol Update */}
+                <div className="flex justify-between items-center pb-6">
+                    <div className="flex gap-6">
+                    <button
+                        onClick={onCLickSemuaDebitur}
+                        className={selectedTab == 0 ? "text-blue-600" : "text-gray-400"}
+                    >
+                        Akan Jatuh Tempo
+                    </button>
+                    <button
+                        onClick={onCLickTelatBayar}
+                        className={selectedTab == 1 ? "text-blue-600" : "text-gray-400"}
+                    >
+                        Sudah Jatuh Tempo
+                    </button>
+                    </div>
+                    {selectedTab === 1 && (
+                    <button className="bg-blue-500 text-white text-sm font-medium py-2 px-4 rounded-lg focus:outline-none hover:bg-blue-700">
+                        Update
+                    </button>
+                    )}
+                </div>
+
+                {/* Tab Tabel Informasi Debitur */}
+                {selectedTab === 0 && <TableAkanJatuhTempo />}
+                {selectedTab === 1 && <TableSudahJatuhTempo />}
                 </div>
             </div>
         </DashboardLayout>

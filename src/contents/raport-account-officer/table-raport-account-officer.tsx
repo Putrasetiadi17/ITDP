@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useHistoryDebitur } from "@/hooks/useHistoryDebitur";
+import CircularLoading from "@/components/loading/circular-loading";
 
 export default function TableRaportAccountOfficer() {
     const historyDataDebitur = [
