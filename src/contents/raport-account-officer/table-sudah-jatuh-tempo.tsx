@@ -52,7 +52,7 @@ export default function TableSudahJatuhTempo() {
     const {jatuhTempo, loading, error} = useSudahJatuhTempo()
 
     return (
-        <div className="w-full">
+        <div className="w-full">              
             {/* Konten Box */}
             <div className="bg-white pt-[4px] pb-[4px] px-4 rounded-[20px] shadow-md">
             {

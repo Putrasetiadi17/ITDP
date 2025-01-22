@@ -13,7 +13,6 @@ export function useAccountMaintenance(){
     const cookies = useCookies()
     const token = cookies.get('auth-token')
 
-    
     useEffect(()=>{
         async function fetchAccountMaintenance() {
             setLoading(true)
