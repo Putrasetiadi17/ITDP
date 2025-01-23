@@ -12,20 +12,23 @@ import TableAkanJatuhTempo from "@/contents/raport-account-officer/table-akan-ja
 import TableSudahJatuhTempo from "@/contents/raport-account-officer/table-sudah-jatuh-tempo";
 import { useStatusPenagihan } from "@/hooks/useStatusPenagihan";
 import { useTotalDebitur } from "@/hooks/useTotalDebitur";
+import { useUpdateSudahJatuhTempo } from "@/hooks/useUpdateSudahJatuhTempo";
 
 export default function Dashboard() {
     const [selectedTab, setSelectedTab] = useState(0)
-    function onCLickSemuaDebitur(){
+    const { storeNewUpdateSudahJatuhTempo } = useUpdateSudahJatuhTempo();
+
+    function onCLickSemuaDebitur() {
         setSelectedTab(0)
     }
-    function onCLickTelatBayar(){
+    function onCLickTelatBayar() {
         setSelectedTab(1)
     }
-    
+
     const index = 6
     const bcItems = [
-        {label: SideBarMenuNav[index].name},
-        {label: SideBarMenuNav[index].subMenu[0].name, path: SideBarMenuNav[index].subMenu[0].ref},
+        { label: SideBarMenuNav[index].name },
+        { label: SideBarMenuNav[index].subMenu[0].name, path: SideBarMenuNav[index].subMenu[0].ref },
     ] as BreadcrumbItem[]
 
     const {
@@ -35,6 +38,11 @@ export default function Dashboard() {
     const {
         totaldebitur
     } = useTotalDebitur()
+
+    const onUpdate = () => {
+        // e.preventDefault();
+        storeNewUpdateSudahJatuhTempo(); 
+    };
 
     return (
         <DashboardLayout label="Testing" bcItems={bcItems}>
@@ -50,7 +58,7 @@ export default function Dashboard() {
                             <div className="flex items-center justify-between w-full">
                                 <div className="flex items-center">
                                     <FaRegUser className="text-blue-500 text-2xl" />
-                                    <h2 className="text-base font-semibold text-gray-800 pl-4">Debitur</h2>    
+                                    <h2 className="text-base font-semibold text-gray-800 pl-4">Debitur</h2>
                                 </div>
                                 <div className="flex items-center space-x-2">
                                     <h1 className="text-sm font-medium text-gray-600">Total Debitur</h1>
@@ -64,18 +72,18 @@ export default function Dashboard() {
                                 <div className="pt-4">
                                     <div className="flex flex-col">
                                         <span className="text-3xl font-bold">{(totaldebitur?.all_deb || 0) - (totaldebitur?.all_jt || 0)}</span>
-                                        <p className="text-xs font-medium text-gray-600">Yang Akan Jatuh Tempo</p>
+                                        <p className="text-xs font-medium text-gray-600">Sudah Jatuh Tempo</p>
                                     </div>
                                 </div>
                                 <div className="w-[2px] h-[60%] bg-gray-100 mx-3"></div>
                                 <div className="pt-4">
                                     <div className="flex flex-col">
-                                    <span className="text-3xl font-bold">{totaldebitur?.all_jt }</span>
-                                    <p className="text-xs font-medium text-gray-600">Jatuh Tempo</p>
+                                        <span className="text-3xl font-bold">{totaldebitur?.all_jt}</span>
+                                        <p className="text-xs font-medium text-gray-600">Akan Jatuh Tempo</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     </div>
                     {/* Konten Box 2 */}
                     <div className="bg-white shadow-md rounded-[20px] p-4 sm:p-6 lg:p-8 flex flex-col items-start w-full h-full">
@@ -87,40 +95,40 @@ export default function Dashboard() {
                                 </div>
                             </div>
                         </div>
-                    {/* Informasi Status Penagihan */}
-                    <div className="pt-4 flex items-center h-full w-full">
-                        <div className="flex justify-between items-center w-full h-full">
-                            <div className="pt-4">
-                                <div className="flex flex-col">
-                                    <span className="text-3xl font-bold">{statuspenagihan?.tahap_pengingat}</span>
-                                    <p className="text-xs font-medium text-gray-600">Tahap Pengingat</p>
-                                </div>
-                            </div>
-                            <div className="w-[2px] h-[60%] bg-gray-100 mx-3"></div>
-                            <div className="pt-4">
-                                <div className="flex flex-col">
-                                    <span className="text-3xl font-bold">{statuspenagihan?.tahap_penagihan}</span>
-                                    <p className="text-xs font-medium text-gray-600">Tahap Penagihan</p>
-                                </div>
-                            </div>
-                            <div className="w-[2px] h-[60%] bg-gray-100 mx-3"></div>
-                            <div className="pt-4">
-                                <div className="flex flex-col">
-                                    <span className="text-3xl font-bold">{statuspenagihan?.closing}</span>
-                                    <p className="text-xs font-medium text-gray-600">Closing</p>
-                                </div>
-                            </div>
-                            <div className="w-[2px] h-[60%] bg-gray-100 mx-3"></div>
+                        {/* Informasi Status Penagihan */}
+                        <div className="pt-4 flex items-center h-full w-full">
+                            <div className="flex justify-between items-center w-full h-full">
                                 <div className="pt-4">
                                     <div className="flex flex-col">
-                                    <span className="text-3xl font-bold">{statuspenagihan?.tidak_bayar}</span>
-                                    <p className="text-xs font-medium text-gray-600">Tidak Bayar</p>
+                                        <span className="text-3xl font-bold">{statuspenagihan?.tahap_pengingat}</span>
+                                        <p className="text-xs font-medium text-gray-600">Tahap Pengingat</p>
+                                    </div>
+                                </div>
+                                <div className="w-[2px] h-[60%] bg-gray-100 mx-3"></div>
+                                <div className="pt-4">
+                                    <div className="flex flex-col">
+                                        <span className="text-3xl font-bold">{statuspenagihan?.tahap_penagihan}</span>
+                                        <p className="text-xs font-medium text-gray-600">Tahap Penagihan</p>
+                                    </div>
+                                </div>
+                                <div className="w-[2px] h-[60%] bg-gray-100 mx-3"></div>
+                                <div className="pt-4">
+                                    <div className="flex flex-col">
+                                        <span className="text-3xl font-bold">{statuspenagihan?.closing}</span>
+                                        <p className="text-xs font-medium text-gray-600">Closing</p>
+                                    </div>
+                                </div>
+                                <div className="w-[2px] h-[60%] bg-gray-100 mx-3"></div>
+                                <div className="pt-4">
+                                    <div className="flex flex-col">
+                                        <span className="text-3xl font-bold">{statuspenagihan?.tidak_bayar}</span>
+                                        <p className="text-xs font-medium text-gray-600">Tidak Bayar</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    </div>
-             
+
                     {/* Konten Box 3 */}
                     <div className="bg-white shadow-md rounded-[20px] gap-6 p-4 sm:p-6 lg:p-8 flex flex-col items-start justify-between w-full h-full">
                         <div className="flex items-center justify-between w-full">
@@ -132,7 +140,7 @@ export default function Dashboard() {
                             </div>
                         </div>
                         <div>
-                            <PieChartComponent/>
+                            <PieChartComponent />
                         </div>
                     </div>
                 </div>
@@ -141,39 +149,41 @@ export default function Dashboard() {
                 {
                 }
                 <div className="container mx-auto pt-8 w-full">
-                <div className="text-xl font-semibold pb-6">
-                    <h2>
-                    Debitur Jatuh Tempo
-                    <span className="text-sm text-gray-400"> /7 hari sebelum jatuh tempo</span>
-                    </h2>
-                </div>
-
-                {/* Tabs and Tombol Update */}
-                <div className="flex justify-between items-center pb-6">
-                    <div className="flex gap-6">
-                    <button
-                        onClick={onCLickSemuaDebitur}
-                        className={selectedTab == 0 ? "text-blue-600" : "text-gray-400"}
-                    >
-                        Akan Jatuh Tempo
-                    </button>
-                    <button
-                        onClick={onCLickTelatBayar}
-                        className={selectedTab == 1 ? "text-blue-600" : "text-gray-400"}
-                    >
-                        Sudah Jatuh Tempo
-                    </button>
+                    <div className="text-xl font-semibold pb-6">
+                        <h2>
+                            Debitur Jatuh Tempo
+                            <span className="text-sm text-gray-400"> /7 hari sebelum jatuh tempo</span>
+                        </h2>
                     </div>
-                    {selectedTab === 1 && (
-                    <button className="bg-blue-500 text-white text-sm font-medium py-2 px-4 rounded-lg focus:outline-none hover:bg-blue-700">
-                        Update
-                    </button>
-                    )}
-                </div>
 
-                {/* Tab Tabel Informasi Debitur */}
-                {selectedTab === 0 && <TableAkanJatuhTempo />}
-                {selectedTab === 1 && <TableSudahJatuhTempo />}
+                    {/* Tabs and Tombol Update */}
+                    <div className="flex justify-between items-center pb-6">
+                        <div className="flex gap-6">
+                            <button
+                                onClick={onCLickSemuaDebitur}
+                                className={selectedTab == 0 ? "text-blue-600" : "text-gray-400"}
+                            >
+                                Akan Jatuh Tempo
+                            </button>
+                            <button
+                                onClick={onCLickTelatBayar}
+                                className={selectedTab == 1 ? "text-blue-600" : "text-gray-400"}
+                            >
+                                Sudah Jatuh Tempo
+                            </button>
+                        </div>
+                        {selectedTab === 1 && (
+                           <button 
+                                onClick={onUpdate} 
+                                className="border border-blue-500 text-blue-500 text-sm font-medium py-2 px-4 rounded-lg focus:outline-none hover:bg-blue-500 hover:text-white">
+                           Update
+                       </button>
+                        )}
+                    </div>
+
+                    {/* Tab Tabel Informasi Debitur */}
+                    {selectedTab === 0 && <TableAkanJatuhTempo />}
+                    {selectedTab === 1 && <TableSudahJatuhTempo />}
                 </div>
             </div>
         </DashboardLayout>

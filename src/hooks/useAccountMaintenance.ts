@@ -3,10 +3,11 @@ import api from "@/services/api";
 import { useCookies } from "next-client-cookies";
 import { useEffect, useState } from "react";
 import { AccountMaintenanceModel } from "@/models/account-maintenance-model";
+import { HistoryAccountMaintenance } from "@/models/history-account-maintenance-model";
 
 
 export function useAccountMaintenance(){
-    const [jatuhTempo, setJatuhTempo] = useState<AccountMaintenanceModel[] | null>()
+    const [jatuhTempo, setJatuhTempo] = useState<HistoryAccountMaintenance[] | null>()
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null)
 
@@ -22,10 +23,11 @@ export function useAccountMaintenance(){
                         'Authorization': 'Bearer ' + token
                     }
                 })
+
                 if(response.status != 200){
                     throw new Error(response.data.message || "Failed to fetch sudah account maintenance")
                 }
-                const data: AccountMaintenanceModel[] = response.data.data
+                const data: HistoryAccountMaintenance[] = response.data.data
                 setJatuhTempo(data)
             } catch (error: unknown) {
                 setError(error instanceof Error ? error.message : "Failed to fetch sudah maintenance")

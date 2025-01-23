@@ -46,13 +46,13 @@ export default function TableAccountMaintenance() {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedJatuhTempo, setSelectedJatuhTempo] = useState<AccountMaintenanceModel>()
-    function openModal(selectedData: AccountMaintenanceModel){
+    function openModal(selectedData: AccountMaintenanceModel) {
         setIsModalOpen(true)
         setSelectedJatuhTempo(selectedData)
     }
 
     //fecth sudah jatuh tempo
-    const {jatuhTempo, loading, error} = useAccountMaintenance()
+    const { jatuhTempo, loading, error } = useAccountMaintenance()
 
     console.log(jatuhTempo);
 
@@ -61,9 +61,9 @@ export default function TableAccountMaintenance() {
         <div className="w-full">
             {/* Konten Box */}
             <div className="bg-white pt-[4px] pb-[4px] px-4 rounded-[20px] shadow-md">
-            {
+                {
                     loading ? (
-                        <CircularLoading/>
+                        <CircularLoading />
                     ) : (
                         error ? (
                             <p>error: {error}</p>
@@ -74,13 +74,10 @@ export default function TableAccountMaintenance() {
                                         <thead className="bg-gray-100">
                                             <tr className="text-left">
                                                 <th className="py-2 px-4 text-sm font-bold text-gray-700 rounded-l-lg">Debitur</th>
-                                                <th className="py-2 px-4 text-sm font-bold text-gray-700">Skor Kredit</th>
-                                                <th className="py-2 px-4 text-sm font-bold text-gray-700">Jatuh Tempo</th>
-                                                <th className="py-2 px-4 text-sm font-bold text-gray-700">Angsuran</th>
                                                 <th className="py-2 px-4 text-sm font-bold text-gray-700">Kesepakatan Awal</th>
                                                 <th className="py-2 px-4 text-sm font-bold text-gray-700">Deskripsi</th>
-                                                <th className="py-2 px-4 text-sm font-bold text-gray-700">File Upload</th>
-                                                <th className="py-2 px-4 text-sm font-bold text-gray-700 rounded-r-lg">Aksi</th>
+                                                <th className="py-2 px-4 text-sm font-bold text-gray-700 rounded-r-lg">File Upload</th>
+                                                {/* <th className="py-2 px-4 text-sm font-bold text-gray-700 rounded-r-lg">Aksi</th> */}
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -95,17 +92,26 @@ export default function TableAccountMaintenance() {
                                                                 height={30}
                                                                 className="rounded-full"
                                                             />
+                                                            {debitur.nama}
                                                         </div>
                                                     </td>
-                                                    <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.credit_id}</td>
                                                     <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.kesepakatan_awal}</td>
                                                     <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.deskripsi}</td>
                                                     <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.tanggal_kunjungan}</td>
-                                                    <td className="py-2 px-4 text-sm text-gray-700 border-y border-r rounded-r-xl">
+                                                    {/* <td className="py-2 px-4 text-sm text-gray-700 border-y  border-r rounded-r-xl"> */}
+                                                        {/* <Image
+                                                            src={debitur.file_bukti}
+                                                            alt={`Profile`}
+                                                            width={30}
+                                                            height={30}
+                                                            className="rounded-full"
+                                                        /> */}
+                                                    {/* </td> */}
+                                                    {/* <td className="py-2 px-4 text-sm text-gray-700 border-y border-r rounded-r-xl">
                                                         <button onClick={()=>openModal(debitur)} className="bg-blue-500 text-white text-sm font-medium py-2 px-4 rounded-lg focus:outline-none hover:bg-blue-700">
                                                             Create Pipeline
                                                         </button>
-                                                    </td>
+                                                    </td> */}
                                                 </tr>
                                             ))}
                                         </tbody>
