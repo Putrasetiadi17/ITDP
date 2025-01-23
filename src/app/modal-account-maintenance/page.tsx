@@ -3,6 +3,7 @@ import Modal from "@/components/modal/modal-popups";
 import { IoWarningOutline } from "react-icons/io5";
 import { JatuhTempoModel } from "@/models/jatuh-tempo-model";
 import { useStoreHistory } from "@/hooks/useStoreHistory";
+import { useStoreHistoryAccountOfficer } from "@/hooks/useHistoryAccountMaintenance";
 
 interface DashboardModalPopupProps {
     isModalOpen: boolean;
@@ -139,40 +140,20 @@ export default function DashboardModalAccountMaintenancePopup(props: DashboardMo
         return -1;
     }
 
-    //submit form
-    // const {storeNewHistory} = useStoreHistory()
-    // async function onSubmitForm(){
-    //     const statusPembayaran = searchStringInArray(selectedStatusNasabah, optionsStatusNasabah) +1
-    //     let pertimbanganId
-    //     switch(statusPembayaran){
-    //         case 1:
-    //             pertimbanganId = optionsStatusPertimbangan
-    //             break
-    //         case 2:
-    //             pertimbanganId = optionsStatusPertimbangan1
-    //             break
-    //         case 3:
-    //             pertimbanganId = optionsStatusPertimbangan2
-    //             break
-    //         case 4:
-    //             pertimbanganId = optionsStatusPertimbangan3
-    //             break
-    //         default:
-    //             pertimbanganId = optionsStatusPertimbangan
-    //     }
-    //     const pertimbangan = searchStringInArray(selectedStatusPertimbangan, pertimbanganId) +1
-    //     const formData = new FormData
-    //     formData.append('tanggal_pembayaran', selectedTanggal)
-    //     formData.append('status_pembayaran', statusPembayaran as unknown as string)
-    //     formData.append('pertimbangan', pertimbangan as unknown as string)
-    //     formData.append('deskripsi', deskripsi)
-    //     formData.append('file_bukti', uploadedFile as unknown as Blob)
-    //     // for (var pair of formData.entries()) {
-    //     //     console.log(pair[0]+ ', ' + pair[1]); 
-    //     // }
-    //     await storeNewHistory(props.selectedJatuhTempo?.id as string, formData)
-    //     onConfirmModalClose()
-    // }
+    // submit form
+    const {storeNewHistoryAccountOfficer} = useStoreHistoryAccountOfficer()
+    async function onSubmitForm(){
+        const formData = new FormData
+        formData.append('tanggal_kunjungan', selectedTanggal)
+        formData.append('kesepakatan_awal',  kesepakatanAwal)
+        formData.append('deskripsi', deskripsi)
+        formData.append('file_bukti', uploadedFile as unknown as Blob)
+        // for (var pair of formData.entries()) {
+        //     console.log(pair[0]+ ', ' + pair[1]); 
+        // }
+        await storeNewHistoryAccountOfficer(props.selectedJatuhTempo?.id as string, formData)
+        onConfirmModalClose()
+    }
 
     return (
         <>
@@ -313,7 +294,7 @@ export default function DashboardModalAccountMaintenancePopup(props: DashboardMo
                             <div className="flex flex-col gap-3 text-sm">
                                 <p>Upload Document</p>
                                 <input 
-                                    type="file" 
+                                    type={"file"} 
                                     className="border px-6 py-2 w-full rounded-[12px]"
                                     onChange={onFileChange}
                                 />
@@ -329,7 +310,7 @@ export default function DashboardModalAccountMaintenancePopup(props: DashboardMo
                             Batal
                         </button>
                         <button
-                            // onClick={onSubmitForm}
+                            onClick={onSubmitForm}
                             className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-md w-[90px] hover:bg-blue-600 w-[300px]"
                         >
                             Simpan
