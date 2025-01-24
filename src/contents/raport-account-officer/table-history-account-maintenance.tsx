@@ -97,7 +97,7 @@ export default function TableAccountMaintenance() {
                                                     </td>
                                                     <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.kesepakatan_awal}</td>
                                                     <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.deskripsi}</td>
-                                                    <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.tanggal_kunjungan}</td>
+                                                    <td className="py-2 px-4 text-sm text-gray-700 border-y border-r rounded-r-xl">{debitur.tanggal_kunjungan}</td>
                                                     {/* <td className="py-2 px-4 text-sm text-gray-700 border-y  border-r rounded-r-xl"> */}
                                                         {/* <Image
                                                             src={debitur.file_bukti}
