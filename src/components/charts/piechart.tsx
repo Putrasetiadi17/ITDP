@@ -17,7 +17,7 @@ export default function PieChartComponent(props: PieChartComponent) {
     { id: 1, value: progres?.tahap_penagihan || 0, label: "Tahap Penagihan" },
     { id: 2, value: progres?.closing || 0, label: "Closing" },
     { id: 3, value: progres?.tidak_bayar || 0, label: "Tidak Bayar"}
-  ];
+  ].filter(item => item.value !== 0);
 
   // Hitung total nilai
   const totalValue = data.reduce((sum, item) => sum + item.value, 0);
