@@ -7,6 +7,7 @@ import CircularLoading from "@/components/loading/circular-loading";
 import { AccountMaintenanceModel } from "@/models/account-maintenance-model";
 import { useAccountMaintenance } from "@/hooks/useAccountMaintenance";
 import DashboardModalAccountMaintenancePopup from "@/app/modal-account-maintenance/page";
+import { Span } from "next/dist/trace";
 
 export default function TableAccountMaintenance() {
     const debiturData = [
@@ -60,6 +61,9 @@ export default function TableAccountMaintenance() {
     return (
         <div className="w-full">
             {/* Konten Box */}
+            <div className="text-xl font-semibold pb-8">
+                <h2>History Account Maintenance</h2>
+            </div>
             <div className="bg-white pt-[4px] pb-[4px] px-4 rounded-[20px] shadow-md">
                 {
                     loading ? (
@@ -76,6 +80,7 @@ export default function TableAccountMaintenance() {
                                                 <th className="py-2 px-4 text-sm font-bold text-gray-700 rounded-l-lg">Debitur</th>
                                                 <th className="py-2 px-4 text-sm font-bold text-gray-700">Kesepakatan Awal</th>
                                                 <th className="py-2 px-4 text-sm font-bold text-gray-700">Deskripsi</th>
+                                                <th className="py-2 px-4 text-sm font-bold text-gray-700">Tanggal Kunjungan</th>
                                                 <th className="py-2 px-4 text-sm font-bold text-gray-700 rounded-r-lg">File Upload</th>
                                                 {/* <th className="py-2 px-4 text-sm font-bold text-gray-700 rounded-r-lg">Aksi</th> */}
                                             </tr>
@@ -97,7 +102,22 @@ export default function TableAccountMaintenance() {
                                                     </td>
                                                     <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.kesepakatan_awal}</td>
                                                     <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.deskripsi}</td>
-                                                    <td className="py-2 px-4 text-sm text-gray-700 border-y border-r rounded-r-xl">{debitur.tanggal_kunjungan}</td>
+                                                    <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.tanggal_kunjungan ? debitur.tanggal_kunjungan : <span className="text-gray-500 italic">Belum dijadwalkan</span>}
+                                                    </td>
+                                                    <td className="py-2 px-4 text-sm text-gray-700 border-y  border-r rounded-r-xl">
+                                                        {debitur.file_bukti ? (
+                                                            <a 
+                                                            href={debitur.file_bukti}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            className="text-blue-500 underline hover:text-blue-700 text-sm"
+                                                            >
+                                                                Lihat File
+                                                            </a>
+                                                        ) : (
+                                                            <span className="text-gray-500 italic">Tidak ada file</span>
+                                                        )}
+                                                    </td>
                                                     {/* <td className="py-2 px-4 text-sm text-gray-700 border-y  border-r rounded-r-xl"> */}
                                                         {/* <Image
                                                             src={debitur.file_bukti}
