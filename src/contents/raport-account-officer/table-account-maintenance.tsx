@@ -54,7 +54,7 @@ export default function TableAccountMaintenance() {
 
     return (
         <div className="w-full">
-            <h2 className="text-xl font-semibold pb-8">Histori Pemeliharaan Kredit</h2>
+            <h2 className="text-xl font-semibold pb-8">List Pemeliharaan Kredit</h2>
             {/* Konten Box */}
             <div className="bg-white pt-[4px] pb-[4px] px-4 rounded-[20px] shadow-md">
             {
