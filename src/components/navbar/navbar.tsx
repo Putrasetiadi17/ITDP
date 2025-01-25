@@ -19,7 +19,7 @@ export default function Navbar(){
                     <LuBell/>
                     <div className="flex flex-col items-end">
                         <h1 className="text-base">{name}</h1>
-                        <h1 className="text-xs text-gray-400">Staf AO Komersial - KC UTAMA BANDUNG</h1>
+                        <h1 className="text-xs text-gray-400">Staf AO UMKM - KC UTAMA BANDUNG</h1>
                     </div>
                     <Image src={"/images/profile-5.jpg"} alt="profile" width={40} height={40} className="rounded-full"/>
                 </div>
