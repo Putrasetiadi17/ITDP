@@ -26,7 +26,7 @@ export default function TableRaportAccountOfficer() {
         <div className="container mx-auto w-full">
             {/* Header */}
             <div className="text-xl font-semibold pb-8">
-                <h2>Plan Eksekusi Penagihan</h2>
+                <h2>List History Pipeline</h2>
             </div>
             {/* Tabel */}
             <div className="w-full">

@@ -62,7 +62,7 @@ export default function TableAccountMaintenance() {
         <div className="w-full">
             {/* Konten Box */}
             <div className="text-xl font-semibold pb-8">
-                <h2>History Account Maintenance</h2>
+                <h2>List History Realisasi</h2>
             </div>
             <div className="bg-white pt-[4px] pb-[4px] px-4 rounded-[20px] shadow-md">
                 {
