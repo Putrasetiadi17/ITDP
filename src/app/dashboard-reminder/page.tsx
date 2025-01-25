@@ -61,7 +61,7 @@ export default function Dashboard() {
                                     <h2 className="text-base font-semibold text-gray-800 pl-4">Debitur</h2>
                                 </div>
                                 <div className="flex items-center space-x-2">
-                                    <h1 className="text-sm font-medium text-gray-600">Total Debitur</h1>
+                                    <h1 className="text-sm font-medium text-gray-600">Debitur Kelolaan</h1>
                                     <span className="text-xl font-bold text-gray-800">{totaldebitur?.all_deb}</span>
                                 </div>
                             </div>
@@ -115,7 +115,7 @@ export default function Dashboard() {
                                 <div className="pt-4">
                                     <div className="flex flex-col">
                                         <span className="text-3xl font-bold">{statuspenagihan?.closing}</span>
-                                        <p className="text-xs font-medium text-gray-600">Closing</p>
+                                        <p className="text-xs font-medium text-gray-600 pt-4">Closing</p>
                                     </div>
                                 </div>
                                 <div className="w-[2px] h-[60%] bg-gray-100 mx-3"></div>
