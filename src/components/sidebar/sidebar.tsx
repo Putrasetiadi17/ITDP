@@ -5,9 +5,11 @@ import { FiChevronsRight } from "react-icons/fi";
 import { FiChevronRight } from "react-icons/fi";
 import { SideBarMenuNav } from "@/constants/navigator";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { MdOutlineLogout } from "react-icons/md";
+import { useRouter } from "next/router";
+import { title } from "process";
 
 export default function Sidebar() {
     // State untuk mengontrol dropdown
