@@ -115,7 +115,7 @@ export default function Dashboard() {
                                 <div className="pt-4">
                                     <div className="flex flex-col">
                                         <span className="text-3xl font-bold">{statuspenagihan?.closing}</span>
-                                        <p className="text-xs font-medium text-gray-600">Closing</p>
+                                        <p className="text-xs font-medium text-gray-600 pt-4">Closing</p>
                                     </div>
                                 </div>
                                 <div className="w-[2px] h-[60%] bg-gray-100 mx-3"></div>
