@@ -81,7 +81,7 @@ export default function TableAccountMaintenance() {
                                                 <th className="py-2 px-4 text-sm font-bold text-gray-700">Kesepakatan Awal</th>
                                                 <th className="py-2 px-4 text-sm font-bold text-gray-700">Deskripsi</th>
                                                 <th className="py-2 px-4 text-sm font-bold text-gray-700">Tanggal Kunjungan</th>
-                                                <th className="py-2 px-4 text-sm font-bold text-gray-700 rounded-r-lg">File Upload</th>
+                                                <th className="py-2 px-4 text-sm font-bold text-gray-700  rounded-r-lg">File Upload</th>
                                                 {/* <th className="py-2 px-4 text-sm font-bold text-gray-700 rounded-r-lg">Aksi</th> */}
                                             </tr>
                                         </thead>
@@ -104,7 +104,7 @@ export default function TableAccountMaintenance() {
                                                     <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.deskripsi}</td>
                                                     <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.tanggal_kunjungan ? debitur.tanggal_kunjungan : <span className="text-gray-500 italic">Belum dijadwalkan</span>}
                                                     </td>
-                                                    <td className="py-2 px-4 text-sm text-gray-700 border-y  border-r rounded-r-xl">
+                                                    <td className="py-2 px-4 text-sm text-gray-700 border-y border-r rounded-r-xl">
                                                         {debitur.file_bukti ? (
                                                             <a 
                                                             href={debitur.file_bukti}
@@ -117,7 +117,7 @@ export default function TableAccountMaintenance() {
                                                         ) : (
                                                             <span className="text-gray-500 italic">Tidak ada file</span>
                                                         )}
-                                                    </td>
+                                                    </td>                                                                              
                                                     {/* <td className="py-2 px-4 text-sm text-gray-700 border-y  border-r rounded-r-xl"> */}
                                                         {/* <Image
                                                             src={debitur.file_bukti}
