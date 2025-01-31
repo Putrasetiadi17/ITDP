@@ -27,7 +27,7 @@ export default function PieChartComponent(props: PieChartComponent) {
       series={[
         {
           data,
-          innerRadius: 24,
+          innerRadius: 30,
           arcLabel: ({ value }) =>
             `${((value / totalValue) * 100).toFixed()}%`, // Label dalam bentuk persentase
         },
@@ -39,7 +39,6 @@ export default function PieChartComponent(props: PieChartComponent) {
         legend: {
           labelStyle: {
             fontSize: 12,
-            
           },
         },
       }}

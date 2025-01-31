@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState } from "react";
+import React, {ChangeEvent, use, useState } from "react";
 import Modal from "@/components/modal/modal-popups";
 import { IoWarningOutline } from "react-icons/io5";
 import { JatuhTempoModel } from "@/models/jatuh-tempo-model";
@@ -9,6 +9,7 @@ interface DashboardModalPopupProps {
     onCloseModal: Function;
     selectedJatuhTempo: JatuhTempoModel | null
 }
+
 
 export default function DashboardModalAccountMaintenancePopup(props: DashboardModalPopupProps) {
     const optionsStatusNasabah = [
@@ -37,6 +38,69 @@ export default function DashboardModalAccountMaintenancePopup(props: DashboardMo
         "Di PHK dari pekerjaan",
         "Debitur kabur(pindah rumah dan no telepon tidak bisa dihubungi)"
     ]
+
+    //Drop down terbaru
+
+    const optionsJenisMonitoring = [
+        "Kunjungan Langsung",
+        "Via Telepon",
+        "Debitur datang ke Cabang"
+    ]
+
+    const optionsKeberadaanDebitur = [
+        "Ada",
+        "Tidak ada ditempat"
+    ]
+
+    const optionsJenisUsaha = [
+        "Perdagangan",
+        "Jasa",
+        "Industri"
+    ]
+
+    const optionsKewajaranPenggunaanKredit = [
+        "Pinjaman baru untuk menutupi kesulitan keunagan",
+        "Pinjaman baru untuk memenuhi kewajiban jatuh tempo"
+    ]
+
+    const optionsProspekUsaha = [
+        "Prospek usaha naik/stabil",
+        "Prospek usaha menurun",
+        "Bangkrut"
+    ]
+
+    const optionsKesesuaianPenggunaan = [
+        "Sesuai",
+        "Tidak sesuai"
+    ]
+
+
+    const optionsDebiturMemilikiPinjamanBaru = [
+        "Tidak",
+        "Ya, sebutkan pinjaman baru tersebut"
+    ]
+
+    // const terbaru
+    
+    const [selectedJenisMonitoring, setSelectedJenisMonitoring] = useState("")
+
+    const [selectedKeberadaanDebitur, setSelectedKeberadaanDebitur] = useState("")
+
+    const [selectedJenisUsaha, setSelectedJenisUsaha] = useState("")
+
+    const [selectedKewajaranPenggunaanKredit, setSelectedKewajaranPenggunaanKredit] = useState("")
+
+    const [selectedProspekUsaha, setSelectedProspekUsaha] = useState("")
+
+    const [selectedKesesuaianPenggunaan, setSelectedKesesuaianPenggunaan] = useState("")
+
+    const [selectedDebiturMemilikiPinjamanBaru, setSelectedDebiturMemilikiPinjamanBaru] = useState("")
+
+    const [penjelasanKeberadaan, setPenjelasanKeberadaan] = useState("")
+
+    const [penjelasaanPinjamanBaruDebitur, setPenjelasanPinjamanDebitur] = useState("")
+
+    // const lama
      
     const [selectedStatusNasabah, setSelectedStatusNasabah] = useState("")
 
@@ -209,6 +273,15 @@ export default function DashboardModalAccountMaintenancePopup(props: DashboardMo
                                 />
                             </div>
                             <div className="flex flex-col gap-3 text-sm">
+                            <p>Saldo</p>
+                                <input
+                                    type="text" 
+                                    disabled
+                                    placeholder={props.selectedJatuhTempo?.total_angsuran.toString()}
+                                    className="border px-6 py-2 w-full rounded-[12px]"
+                                />
+                            </div> 
+                            <div className="flex flex-col gap-3 text-sm">
                                 <p>Tanggal Jatuh Tempo</p>
                                 <input
                                     type="text"
@@ -227,22 +300,101 @@ export default function DashboardModalAccountMaintenancePopup(props: DashboardMo
                                 />
                             </div>
                             <div className="flex flex-col gap-3 text-sm">
-                                <p>Outstanding</p>
-                                <input
-                                    type="text" 
-                                    disabled
-                                    placeholder={props.selectedJatuhTempo?.outstanding.toString()}
+                                <p>Upload Document</p>
+                                <input 
+                                    type={"file"} 
                                     className="border px-6 py-2 w-full rounded-[12px]"
+                                    onChange={onFileChange}
                                 />
                             </div>
                             <div className="flex flex-col gap-3 text-sm">
-                                <p>Interest</p>
+                                <p>Jenis Monitoring</p>
+                                <select
+                                    className="border px-6 py-2 w-full rounded-[12px]"
+                                    value={selectedJenisMonitoring}
+                                    onChange={(e) => setSelectedJenisMonitoring(e.target.value)}
+                                >
+                                    <option value="" disabled>Pilih Jenis Monitoring</option>
+                                    {optionsJenisMonitoring.map((option, index) => (
+                                        <option key={index} value={option}>{option}</option>
+                                    ))}
+                                </select>
+                            </div>
+
+                            <div className="flex flex-col gap-3 text-sm">
+                                <p>Keberadaan Debitur</p>
+                                    <select
+                                    className="border px-6 py-2 w-full rounded-[12px]"
+                                    value={selectedKeberadaanDebitur}
+                                    onChange={(e) => setSelectedKeberadaanDebitur(e.target.value)}
+                                >
+                                    <option value="" disabled>Pilih Keberadaan Debitur</option>
+                                    {optionsKeberadaanDebitur.map((option, index) => (
+                                        <option key={index} value={option}>{option}</option>
+                                    ))}
+                                </select>
+                            </div>
+                            <div className="flex flex-col gap-3 text-sm">
+                                <p>Penjelasan Keberadaan Debitur</p>
                                 <input
                                     type="text" 
-                                    disabled
-                                    placeholder={props.selectedJatuhTempo?.interest.toString()}
+                                    disabled={selectedKeberadaanDebitur !== "Tidak ada ditempat"}
+                                    placeholder="Tulis penjelasan keberadaan debitur"
                                     className="border px-6 py-2 w-full rounded-[12px]"
+                                    onChange={(e) => setPenjelasanKeberadaan(e.target.value)}
                                 />
+                            </div>
+                            <div className="flex flex-col gap-3 text-sm">
+                                <p>Jenis Usaha</p>
+                                <select
+                                    className="border px-6 py-2 w-full rounded-[12px]"
+                                    value={selectedJenisUsaha}
+                                    onChange={(e) => setSelectedJenisUsaha(e.target.value)}
+                                >
+                                    <option value="" disabled>Pilih Jenis Usaha</option>
+                                    {optionsJenisUsaha.map((option, index) => (
+                                        <option key={index} value={option}>{option}</option>
+                                    ))}
+                                </select>
+                            </div>
+                            <div className="flex flex-col gap-3 text-sm">
+                                <p>Kewajaran Penggunaan Kredit dari pinjaman baru</p>
+                                <select
+                                    className="border px-6 py-2 w-full rounded-[12px]"
+                                    value={selectedKewajaranPenggunaanKredit}
+                                    onChange={(e) => setSelectedKewajaranPenggunaanKredit(e.target.value)}
+                                >
+                                   <option value="" disabled>Pilih Jenis Kewajaran Kredit pinjaman baru</option>
+                                   {optionsKewajaranPenggunaanKredit.map((option, index) => (
+                                        <option key={index} value={option}>{option}</option>
+                                   ))}
+                                </select>
+                            </div>
+                            <div className="flex flex-col gap-3 text-sm">
+                                <p>Prospek Usaha</p>
+                                <select
+                                    className="border px-6 py-2 w-full rounded-[12px]"
+                                    value={selectedProspekUsaha}
+                                    onChange={(e) => setSelectedProspekUsaha(e.target.value)}
+                                >
+                                    <option value="" disabled>Pilih Jenis Prospek Usaha</option>
+                                    {optionsProspekUsaha.map((option, index) => (
+                                        <option key={index} value={option}>{option}</option>
+                                    ))}
+                                </select>
+                            </div>
+                            <div className="flex flex-col gap-3 text-sm">
+                                <p>Kesesuaian Penggunaan</p>
+                                <select
+                                    className="border px-6 py-2 w-full rounded-[12px]"
+                                    value={selectedKesesuaianPenggunaan}
+                                    onChange={(e) => setSelectedKesesuaianPenggunaan(e.target.value)}
+                                >
+                                    <option value="" disabled>Pilih Kesesuaian Penggunaan</option>
+                                    {optionsKesesuaianPenggunaan.map((option, index) => (
+                                        <option key={index} value={option}>{option}</option>
+                                    ))}
+                                </select>
                             </div>
                             <div className="flex flex-col gap-3 text-sm">
                                 <p>Tanggal Kunjungan</p>
@@ -254,24 +406,6 @@ export default function DashboardModalAccountMaintenancePopup(props: DashboardMo
                                 />
                             </div>
                             <div className="flex flex-col gap-3 text-sm">
-                                <p>Total Angsuran</p>
-                                <input
-                                    type="text" 
-                                    disabled
-                                    placeholder={props.selectedJatuhTempo?.total_angsuran.toString()}
-                                    className="border px-6 py-2 w-full rounded-[12px]"
-                                />
-                            </div>
-                            <div className="flex flex-col gap-3 text-sm">
-                                <p>Saldo</p>
-                                <input
-                                    type="text" 
-                                    disabled
-                                    placeholder={props.selectedJatuhTempo?.total_angsuran.toString()}
-                                    className="border px-6 py-2 w-full rounded-[12px]"
-                                />
-                            </div>                           
-                            <div className="flex flex-col gap-3 text-sm">
                                 <p>Kesepakatan Awal</p>
                                 <input 
                                     type="text" 
@@ -282,6 +416,29 @@ export default function DashboardModalAccountMaintenancePopup(props: DashboardMo
                                 />
                             </div>
                             <div className="flex flex-col gap-3 text-sm">
+                                <p>Debitur Memiliki Pinjaman Baru di Tempat Lain</p>
+                                <select
+                                    className="border px-6 py-2 w-full rounded-[12px]"
+                                    value={selectedDebiturMemilikiPinjamanBaru}
+                                    onChange={(e) => setSelectedDebiturMemilikiPinjamanBaru(e.target.value)}
+                                >
+                                    <option value="" disabled>Pilih Keterangan</option>
+                                    {optionsDebiturMemilikiPinjamanBaru.map((option, index) => (
+                                        <option key={index} value={option}>{option}</option>
+                                    ))}
+                                </select>
+                            </div>
+                            <div className="flex flex-col gap-3 text-sm">
+                                <p>Penjelasan Pinjaman Baru Debitur</p>
+                                <input
+                                    type="text" 
+                                    disabled={selectedDebiturMemilikiPinjamanBaru !== "Ya, sebutkan pinjaman baru tersebut"}
+                                    placeholder="Tulis penjelasan pinjaman baru debitur"
+                                    className="border px-6 py-2 w-full rounded-[12px]"
+                                    onChange={(e) => setPenjelasanPinjamanDebitur(e.target.value)}
+                                />
+                            </div>              
+                            <div className="flex flex-col gap-3 text-sm">
                                 <p>Deskripsi</p>
                                 <input
                                     type="text" 
@@ -290,14 +447,6 @@ export default function DashboardModalAccountMaintenancePopup(props: DashboardMo
                                     className="border px-6 py-2 w-full rounded-[12px]"
                                     onChange={onChangeDeskripsi}
                                 />
-                            <div className="flex flex-col gap-3 text-sm">
-                                <p>Upload Document</p>
-                                <input 
-                                    type={"file"} 
-                                    className="border px-6 py-2 w-full rounded-[12px]"
-                                    onChange={onFileChange}
-                                />
-                            </div>
                             </div>
                         </div>
                     </div>
