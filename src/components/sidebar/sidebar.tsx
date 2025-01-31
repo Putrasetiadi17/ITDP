@@ -113,7 +113,7 @@ export default function Sidebar() {
                             onClick={logout}
                         >
                             <MdOutlineLogout />
-                            <span>Keluar</span>
+                            <span className="text-sm">Keluar</span>
                         </button>
                     </div>
                 </div>

@@ -13,6 +13,8 @@ import TableSudahJatuhTempo from "@/contents/raport-account-officer/table-sudah-
 import { useStatusPenagihan } from "@/hooks/useStatusPenagihan";
 import { useTotalDebitur } from "@/hooks/useTotalDebitur";
 import { useUpdateSudahJatuhTempo } from "@/hooks/useUpdateSudahJatuhTempo";
+import { GrHostMaintenance } from "react-icons/gr";
+import PieChartComponentAccountMaintenance from "@/components/charts/piechart-account-maintenance";
 
 export default function Dashboard() {
     const [selectedTab, setSelectedTab] = useState(0)
@@ -50,12 +52,15 @@ export default function Dashboard() {
                 <div className="text-xl font-semibold pb-8">
                     <h2>UMKM</h2>
                 </div>
-                {/* Wrapper untuk 3 Konten Box yang mengisi full screen column */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="text-xl font-sm pb-8">
+                    <h2>Monitoring Account Maintenance</h2>
+                </div>
+                 {/* Konten Atas */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     {/* Konten Box 1 */}
-                    <div className="bg-white shadow-md rounded-[20px] p-4 sm:p-6 lg:p-8 flex flex-col items-start w-full h-full">
+                    <div className="bg-white shadow-md rounded-[20px] p-6 flex flex-col flex-1">
                         <div className="flex flex-col gap-2 w-full">
-                            <div className="flex items-center justify-between w-full">
+                            <div className="flex justify-between items-center">
                                 <div className="flex items-center">
                                     <FaRegUser className="text-blue-500 text-2xl" />
                                     <h2 className="text-base font-semibold text-gray-800 pl-4">Debitur</h2>
@@ -68,7 +73,7 @@ export default function Dashboard() {
                         </div>
                         {/* Informasi Jatuh Tempo */}
                         <div className="pt-4 flex items-center h-full w-full">
-                            <div className="flex justify-between items-center w-full h-full ">
+                            <div className="flex justify-between items-center w-full h-full">
                                 <div className="pt-4">
                                     <div className="flex flex-col">
                                         <span className="text-3xl font-bold">{(totaldebitur?.all_deb || 0) - (totaldebitur?.all_jt || 0)}</span>
@@ -77,7 +82,7 @@ export default function Dashboard() {
                                 </div>
                                 <div className="w-[2px] h-[60%] bg-gray-100 mx-3"></div>
                                 <div className="pt-4">
-                                    <div className="flex flex-col">
+                                    <div className="flex flex-col items-start">
                                         <span className="text-3xl font-bold">{totaldebitur?.all_jt}</span>
                                         <p className="text-xs font-medium text-gray-600">Akan Jatuh Tempo</p>
                                     </div>
@@ -91,7 +96,29 @@ export default function Dashboard() {
                             <div className="flex items-center justify-between w-full">
                                 <div className="flex items-center">
                                     <GoChecklist className="text-green-500 text-2xl" />
-                                    <h2 className="text-base font-semibold text-gray-800 pl-4">Status Penagihan</h2>
+                                    <h2 className="text-base font-semibold text-gray-800 pl-4">Progres Monitoring
+                                    <span className="text-xs text-gray-600"> /bulan</span>
+                                    </h2>
+                                </div>
+                            </div>
+                            <PieChartComponentAccountMaintenance />
+                        </div>
+                    </div>
+                </div>
+
+                
+                {/* Konten Bawah */}
+                <div className="text-xl font-sm pb-8 mt-8">
+                    <h1>Monitoring Pipeline</h1>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-6">
+                    {/* Konten Box 2 */}
+                    <div className="bg-white shadow-md rounded-[20px] p-4 sm:p-6 lg:p-8 flex flex-col items-start w-full h-full">
+                        <div className="flex flex-col gap-2 w-full">
+                            <div className="flex items-center justify-between w-full">
+                                <div className="flex items-center">
+                                    <GoChecklist className="text-green-500 text-2xl" />
+                                    <h2 className="text-base font-semibold text-gray-800 pl-4">Status Pipeline</h2>
                                 </div>
                             </div>
                         </div>
@@ -115,7 +142,7 @@ export default function Dashboard() {
                                 <div className="pt-4">
                                     <div className="flex flex-col">
                                         <span className="text-3xl font-bold">{statuspenagihan?.closing}</span>
-                                        <p className="text-xs font-medium text-gray-600 pt-4">Closing</p>
+                                        <p className="text-xs font-medium text-gray-600">Closing</p>
                                     </div>
                                 </div>
                                 <div className="w-[2px] h-[60%] bg-gray-100 mx-3"></div>
@@ -142,12 +169,11 @@ export default function Dashboard() {
                         <div>
                             <PieChartComponent />
                         </div>
-                    </div>
+                    </div> 
                 </div>
 
                 {/* Section Debitur Jatuh Tempo */}
-                {
-                }
+
                 <div className="container mx-auto pt-8 w-full">
                     <div className="text-xl font-semibold pb-6">
                         <h2>
