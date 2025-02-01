@@ -69,7 +69,8 @@ export default function TableAkanJatuhTempo() {
                                             <tr className="text-left">
                                                 <th className="py-2 px-4 text-sm font-bold text-gray-700 rounded-l-lg">Debitur</th>
                                                 <th className="py-2 px-4 text-sm font-bold text-gray-700">Collect</th>
-                                                <th className="py-2 px-4 text-sm font-bold text-gray-700">Jatuh Tempo</th>
+                                                <th className="py-2 px-4 text-sm font-bold text-gray-700">Jatuh Tempo</th>                                                
+                                                <th className="py-2 px-4 text-sm font-bold text-gray-700">Date Past Due</th>
                                                 <th className="py-2 px-4 text-sm font-bold text-gray-700">Pokok</th>
                                                 <th className="py-2 px-4 text-sm font-bold text-gray-700">Interest</th>
                                                 <th className="py-2 px-4 text-sm font-bold text-gray-700">Saldo</th>
@@ -93,7 +94,8 @@ export default function TableAkanJatuhTempo() {
                                                         </div>
                                                     </td>
                                                     <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.collect}</td>
-                                                    <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.tanggal_jatuh_tempo}</td>
+                                                    <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.tanggal_jatuh_tempo}</td>                                                    
+                                                    <td className="py-2 px-4 text-sm text-gray-700 border-y">{""}</td>
                                                     <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.outstanding}</td>
                                                     <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.interest}</td>
                                                     <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.debitur.account_balance}</td>
