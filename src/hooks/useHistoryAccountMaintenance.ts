@@ -24,7 +24,7 @@ export function useStoreHistoryAccountOfficer(){
                 }
             })
 
-            console.log(response)
+            console.log(response);
 
             if(response.status != 200){
                 throw new Error(response.data.message || "Failed to store new history account officer")
