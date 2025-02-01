@@ -242,7 +242,7 @@ export default function DashboardModalPopup(props: DashboardModalPopupProps) {
                                 />
                             </div>
                             <div className="flex flex-col gap-3 text-sm">
-                                <p>Outstanding</p>
+                                <p>Pokok</p>
                                 <input
                                     type="text" 
                                     disabled

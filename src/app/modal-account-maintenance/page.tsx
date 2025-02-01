@@ -1,4 +1,4 @@
-import React, {ChangeEvent, use, useState } from "react";
+import React, { ChangeEvent, use, useState } from "react";
 import Modal from "@/components/modal/modal-popups";
 import { IoWarningOutline } from "react-icons/io5";
 import { JatuhTempoModel } from "@/models/jatuh-tempo-model";
@@ -13,7 +13,7 @@ interface DashboardModalPopupProps {
 
 export default function DashboardModalAccountMaintenancePopup(props: DashboardModalPopupProps) {
     const optionsStatusNasabah = [
-        "Tahap Pengingat", 
+        "Tahap Pengingat",
         "Tahap Penagihan",
         "Closing",
         "Tidak Bayar"
@@ -81,7 +81,7 @@ export default function DashboardModalAccountMaintenancePopup(props: DashboardMo
     ]
 
     // const terbaru
-    
+
     const [selectedJenisMonitoring, setSelectedJenisMonitoring] = useState("")
 
     const [selectedKeberadaanDebitur, setSelectedKeberadaanDebitur] = useState("")
@@ -101,28 +101,28 @@ export default function DashboardModalAccountMaintenancePopup(props: DashboardMo
     const [penjelasaanPinjamanBaruDebitur, setPenjelasanPinjamanDebitur] = useState("")
 
     // const lama
-     
+
     const [selectedStatusNasabah, setSelectedStatusNasabah] = useState("")
 
     const [selectedStatusPertimbangan, setSelectedStatusPertimbangan] = useState("")
     const [selectedStatusPertimbangan1, setSelectedStatusPertimbangan1] = useState("")
     const [selectedStatusPertimbangan2, setSelectedStatusPertimbangan2] = useState("")
-    const [selectedStatusPertimbangan3, setSelectedStatusPertimbangan3] = useState("")  
-    
+    const [selectedStatusPertimbangan3, setSelectedStatusPertimbangan3] = useState("")
+
     const [isCloseModal, setIsCloseModal] = useState(false)
 
-    function clearState(){
+    function clearState() {
         setSelectedStatusPertimbangan("")
         setSelectedStatusPertimbangan1("")
         setSelectedStatusPertimbangan2("")
         setSelectedStatusPertimbangan3("")
     }
-    function onSelectStatusNasabah(value: string){
+    function onSelectStatusNasabah(value: string) {
         clearState()
         setSelectedStatusNasabah(value)
     }
-    function onSelectPertimbangan(value: string){
-        switch(selectedStatusNasabah){
+    function onSelectPertimbangan(value: string) {
+        switch (selectedStatusNasabah) {
             case "Tahap Pengingat":
                 setSelectedStatusPertimbangan(value)
             case "Tahap Penagihan":
@@ -136,8 +136,8 @@ export default function DashboardModalAccountMaintenancePopup(props: DashboardMo
         }
     }
 
-    function getValueOption(){
-        switch(selectedStatusNasabah){
+    function getValueOption() {
+        switch (selectedStatusNasabah) {
             case "Tahap Pengingat":
                 return selectedStatusPertimbangan
             case "Tahap Penagihan":
@@ -155,28 +155,28 @@ export default function DashboardModalAccountMaintenancePopup(props: DashboardMo
     function onClose() {
         setIsCloseModal(true);
     }
-    
-    function onSave(){
+
+    function onSave() {
         props.onCloseModal(false);
     }
 
-    function onCloseModalClose(){
+    function onCloseModalClose() {
         setIsCloseModal(false);
     }
 
-    function onConfirmModalClose(){
+    function onConfirmModalClose() {
         props.onCloseModal(false)
         setIsCloseModal(false)
     }
 
     //input state
     const [deskripsi, setDeskripsi] = useState("")
-    function onChangeDeskripsi(e: ChangeEvent<HTMLInputElement>){
+    function onChangeDeskripsi(e: ChangeEvent<HTMLInputElement>) {
         setDeskripsi(e.target.value)
     }
 
     const [kesepakatanAwal, setKesepakatanAwal] = useState("")
-    function onChangeKesepakatanAwal(e: ChangeEvent<HTMLInputElement>){
+    function onChangeKesepakatanAwal(e: ChangeEvent<HTMLInputElement>) {
         setKesepakatanAwal(e.target.value)
     }
 
@@ -184,38 +184,64 @@ export default function DashboardModalAccountMaintenancePopup(props: DashboardMo
     const [uploadedFile, setUploadedFile] = useState<any | null>(null);
 
     //Handler for file input change
-    function onFileChange(event: ChangeEvent<HTMLInputElement>){
-        if (event.target.files && event.target.files[0]){
+    function onFileChange(event: ChangeEvent<HTMLInputElement>) {
+        if (event.target.files && event.target.files[0]) {
             console.log(event.target.files[0])
             setUploadedFile(event.target.files[0])
         }
     }
 
     const [selectedTanggal, setSelectedTanggal] = useState("")
-    function onChangeTanggal(tanggal: any){
+    function onChangeTanggal(tanggal: any) {
         setSelectedTanggal(tanggal.target.value)
     }
 
-    function searchStringInArray (str: string, strArray: string[]) {
-        for (var j=0; j<strArray.length; j++) {
+    function searchStringInArray(str: string, strArray: string[]) {
+        for (var j = 0; j < strArray.length; j++) {
             if (strArray[j].match(str)) return j;
         }
         return -1;
     }
 
     // submit form
-    const {storeNewHistoryAccountOfficer} = useStoreHistoryAccountOfficer()
-    async function onSubmitForm(){
-        const formData = new FormData
-        formData.append('tanggal_kunjungan', selectedTanggal)
-        formData.append('kesepakatan_awal',  kesepakatanAwal)
-        formData.append('deskripsi', deskripsi)
-        formData.append('file_bukti', uploadedFile as unknown as Blob)
-        // for (var pair of formData.entries()) {
-        //     console.log(pair[0]+ ', ' + pair[1]); 
-        // }
-        await storeNewHistoryAccountOfficer(props.selectedJatuhTempo?.id as string, formData)
-        onConfirmModalClose()
+    const { storeNewHistoryAccountOfficer } = useStoreHistoryAccountOfficer();
+
+    async function onSubmitForm() {
+        const formData = new FormData();
+
+        formData.append("tanggal_kunjungan", selectedTanggal);
+        formData.append("jenis_usaha", String(searchStringInArray(selectedJenisUsaha, optionsJenisUsaha)));
+        formData.append("jenis_monitoring", String(searchStringInArray(selectedJenisMonitoring, optionsJenisMonitoring)));
+        formData.append("keberadaan_debitur", String(selectedKeberadaanDebitur === "Ada" ? 1 : 0));
+
+        // Jika keberadaan debitur "Tidak ada ditempat", tambahkan penjelasannya
+        if (selectedKeberadaanDebitur === "Tidak ada ditempat") {
+            formData.append("penjelasan", penjelasanKeberadaan);
+        }
+
+        formData.append("kesepakatan_awal", kesepakatanAwal);
+        formData.append("kesesuaian_penggunaan", String(selectedKesesuaianPenggunaan === "Sesuai" ? 1 : 0));
+
+        // Jika ada file bukti, tambahkan ke formData
+        if (uploadedFile) {
+            formData.append("file_bukti", uploadedFile as unknown as Blob);
+        }
+
+        formData.append("kewajaran_penggunaan_kredit", String(searchStringInArray(selectedKewajaranPenggunaanKredit, optionsKewajaranPenggunaanKredit)));
+        formData.append("debitur_memiliki_pinjaman_baru", String(selectedDebiturMemilikiPinjamanBaru === "Tidak" ? 0 : 1));
+
+        // Jika debitur memiliki pinjaman baru, tambahkan detailnya
+        if (selectedDebiturMemilikiPinjamanBaru === "Ya, sebutkan pinjaman baru tersebut") {
+            formData.append("tujuan_pinjaman", penjelasaanPinjamanBaruDebitur);
+        }
+
+        formData.append("prospek_usaha", String(searchStringInArray(selectedProspekUsaha, optionsProspekUsaha)));
+
+        // Kirim data ke API
+        await storeNewHistoryAccountOfficer(props.selectedJatuhTempo?.id as string, formData);
+
+        // Tutup modal setelah submit berhasil
+        onConfirmModalClose();
     }
 
     return (
@@ -255,7 +281,7 @@ export default function DashboardModalAccountMaintenancePopup(props: DashboardMo
                                 />
                             </div>
                             <div className="flex flex-col gap-3 text-sm">
-                                <p>Kualitas Kredit</p>
+                                <p>Collect</p>
                                 <input
                                     type="text"
                                     disabled
@@ -273,14 +299,14 @@ export default function DashboardModalAccountMaintenancePopup(props: DashboardMo
                                 />
                             </div>
                             <div className="flex flex-col gap-3 text-sm">
-                            <p>Saldo</p>
+                                <p>Saldo</p>
                                 <input
-                                    type="text" 
+                                    type="text"
                                     disabled
                                     placeholder={props.selectedJatuhTempo?.total_angsuran.toString()}
                                     className="border px-6 py-2 w-full rounded-[12px]"
                                 />
-                            </div> 
+                            </div>
                             <div className="flex flex-col gap-3 text-sm">
                                 <p>Tanggal Jatuh Tempo</p>
                                 <input
@@ -301,8 +327,8 @@ export default function DashboardModalAccountMaintenancePopup(props: DashboardMo
                             </div>
                             <div className="flex flex-col gap-3 text-sm">
                                 <p>Upload Document</p>
-                                <input 
-                                    type={"file"} 
+                                <input
+                                    type={"file"}
                                     className="border px-6 py-2 w-full rounded-[12px]"
                                     onChange={onFileChange}
                                 />
@@ -323,7 +349,7 @@ export default function DashboardModalAccountMaintenancePopup(props: DashboardMo
 
                             <div className="flex flex-col gap-3 text-sm">
                                 <p>Keberadaan Debitur</p>
-                                    <select
+                                <select
                                     className="border px-6 py-2 w-full rounded-[12px]"
                                     value={selectedKeberadaanDebitur}
                                     onChange={(e) => setSelectedKeberadaanDebitur(e.target.value)}
@@ -337,7 +363,7 @@ export default function DashboardModalAccountMaintenancePopup(props: DashboardMo
                             <div className="flex flex-col gap-3 text-sm">
                                 <p>Penjelasan Keberadaan Debitur</p>
                                 <input
-                                    type="text" 
+                                    type="text"
                                     disabled={selectedKeberadaanDebitur !== "Tidak ada ditempat"}
                                     placeholder="Tulis penjelasan keberadaan debitur"
                                     className="border px-6 py-2 w-full rounded-[12px]"
@@ -364,10 +390,10 @@ export default function DashboardModalAccountMaintenancePopup(props: DashboardMo
                                     value={selectedKewajaranPenggunaanKredit}
                                     onChange={(e) => setSelectedKewajaranPenggunaanKredit(e.target.value)}
                                 >
-                                   <option value="" disabled>Pilih Jenis Kewajaran Kredit pinjaman baru</option>
-                                   {optionsKewajaranPenggunaanKredit.map((option, index) => (
+                                    <option value="" disabled>Pilih Jenis Kewajaran Kredit pinjaman baru</option>
+                                    {optionsKewajaranPenggunaanKredit.map((option, index) => (
                                         <option key={index} value={option}>{option}</option>
-                                   ))}
+                                    ))}
                                 </select>
                             </div>
                             <div className="flex flex-col gap-3 text-sm">
@@ -407,8 +433,8 @@ export default function DashboardModalAccountMaintenancePopup(props: DashboardMo
                             </div>
                             <div className="flex flex-col gap-3 text-sm">
                                 <p>Kesepakatan Awal</p>
-                                <input 
-                                    type="text" 
+                                <input
+                                    type="text"
                                     value={kesepakatanAwal}
                                     placeholder="Tuliskan kesepakatan awal disini"
                                     className="border px-6 py-2 w-full rounded-[12px]"
@@ -431,14 +457,14 @@ export default function DashboardModalAccountMaintenancePopup(props: DashboardMo
                             <div className="flex flex-col gap-3 text-sm">
                                 <p>Penjelasan Pinjaman Baru Debitur</p>
                                 <input
-                                    type="text" 
+                                    type="text"
                                     disabled={selectedDebiturMemilikiPinjamanBaru !== "Ya, sebutkan pinjaman baru tersebut"}
                                     placeholder="Tulis penjelasan pinjaman baru debitur"
                                     className="border px-6 py-2 w-full rounded-[12px]"
                                     onChange={(e) => setPenjelasanPinjamanDebitur(e.target.value)}
                                 />
-                            </div>              
-                            <div className="flex flex-col gap-3 text-sm">
+                            </div>
+                            {/* <div className="flex flex-col gap-3 text-sm">
                                 <p>Deskripsi</p>
                                 <input
                                     type="text" 
@@ -447,7 +473,7 @@ export default function DashboardModalAccountMaintenancePopup(props: DashboardMo
                                     className="border px-6 py-2 w-full rounded-[12px]"
                                     onChange={onChangeDeskripsi}
                                 />
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                     <div className="flex justify-end gap-4 text-sm">
@@ -471,7 +497,7 @@ export default function DashboardModalAccountMaintenancePopup(props: DashboardMo
                     <Modal onClose={onClose}>
                         <div className="flex flex-col items-center justify-center h-full gap-8 p-20">
                             <div className="flex flex-col items-center">
-                                <IoWarningOutline size={150} className="text-red-600"/>
+                                <IoWarningOutline size={150} className="text-red-600" />
                                 <h2>Yakin ingin membatalkan proses eksekusi</h2>
                             </div>
                             <div className="flex flex-col gap-4 w-[400px] items-center">

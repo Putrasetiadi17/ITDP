@@ -70,7 +70,6 @@ export default function TableAccountMaintenance() {
                                         <thead className="bg-gray-100">
                                             <tr className="text-left">
                                                 <th className="py-2 px-4 text-sm font-bold text-gray-700 rounded-l-lg">Debitur</th>
-                                                <th className="py-2 px-4 text-sm font-bold text-gray-700">Skor Kredit</th>
                                                 <th className="py-2 px-4 text-sm font-bold text-gray-700">Jatuh Tempo</th>
                                                 <th className="py-2 px-4 text-sm font-bold text-gray-700">Tanggal Cair</th>
                                                 <th className="py-2 px-4 text-sm font-bold text-gray-700">Total Pinjaman</th>
@@ -92,7 +91,6 @@ export default function TableAccountMaintenance() {
                                                             {debitur.debitur.nama}
                                                         </div>
                                                     </td>
-                                                    <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.collect}</td>
                                                     <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.tanggal_jatuh_tempo}</td>
                                                     <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.tanggal_cair}</td>
                                                     <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.interest}</td>
