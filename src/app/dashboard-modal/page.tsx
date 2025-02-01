@@ -206,7 +206,7 @@ export default function DashboardModalPopup(props: DashboardModalPopupProps) {
                                 />
                             </div>
                             <div className="flex flex-col gap-3 text-sm">
-                                <p>Kualitas Kredit</p>
+                                <p>Collect</p>
                                 <input
                                     type="text"
                                     disabled
@@ -242,6 +242,15 @@ export default function DashboardModalPopup(props: DashboardModalPopupProps) {
                                 />
                             </div>
                             <div className="flex flex-col gap-3 text-sm">
+                                <p>Date Past Due</p>
+                                <input
+                                    type="text"
+                                    disabled
+                                    placeholder={`${props.selectedJatuhTempo?.lama_collect} hari`}
+                                    className="border px-6 py-2 w-full rounded-[12px]"
+                                />
+                            </div>
+                            <div className="flex flex-col gap-3 text-sm">
                                 <p>Pokok</p>
                                 <input
                                     type="text" 
@@ -260,15 +269,6 @@ export default function DashboardModalPopup(props: DashboardModalPopupProps) {
                                 />
                             </div>
                             <div className="flex flex-col gap-3 text-sm">
-                                <p>Tanggal Input</p>
-                                <input
-                                    type="date"
-                                    value={selectedTanggal}
-                                    className="border px-6 py-2 w-full rounded-[12px]"
-                                    onChange={onChangeTanggal}
-                                />
-                            </div>
-                            <div className="flex flex-col gap-3 text-sm">
                                 <p>Total Angsuran</p>
                                 <input
                                     type="text" 
@@ -284,6 +284,15 @@ export default function DashboardModalPopup(props: DashboardModalPopupProps) {
                                     disabled
                                     placeholder={props.selectedJatuhTempo?.total_angsuran.toString()}
                                     className="border px-6 py-2 w-full rounded-[12px]"
+                                />
+                            </div>
+                            <div className="flex flex-col gap-3 text-sm">
+                                <p>Tanggal Input</p>
+                                <input
+                                    type="date"
+                                    value={selectedTanggal}
+                                    className="border px-6 py-2 w-full rounded-[12px]"
+                                    onChange={onChangeTanggal}
                                 />
                             </div>
                             <div className="flex flex-col gap-3 text-sm">

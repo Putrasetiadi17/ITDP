@@ -95,7 +95,7 @@ export default function TableAkanJatuhTempo() {
                                                     </td>
                                                     <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.collect}</td>
                                                     <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.tanggal_jatuh_tempo}</td>                                                    
-                                                    <td className="py-2 px-4 text-sm text-gray-700 border-y">{""}</td>
+                                                    <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.lama_collect} <span className="text-gray-500">hari</span></td>
                                                     <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.outstanding}</td>
                                                     <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.interest}</td>
                                                     <td className="py-2 px-4 text-sm text-gray-700 border-y">{debitur.debitur.account_balance}</td>
