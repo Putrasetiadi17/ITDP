@@ -1,5 +1,6 @@
 export interface AccountMaintenanceModel {
     id: string;
+    nama: string;
     credit_id: string;
     tanggal_kunjungan: string;
     jenis_usaha: number;

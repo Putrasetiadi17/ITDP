@@ -215,27 +215,23 @@ export default function DashboardModalAccountMaintenancePopup(props: DashboardMo
         formData.append("keberadaan_debitur", String(selectedKeberadaanDebitur === "Ada" ? 1 : 0));
 
         // Jika keberadaan debitur "Tidak ada ditempat", tambahkan penjelasannya
-        if (selectedKeberadaanDebitur === "Tidak ada ditempat") {
-            formData.append("penjelasan", penjelasanKeberadaan);
-        }
+        formData.append("penjelasan", penjelasanKeberadaan);
 
         formData.append("kesepakatan_awal", kesepakatanAwal);
         formData.append("kesesuaian_penggunaan", String(selectedKesesuaianPenggunaan === "Sesuai" ? 1 : 0));
 
         // Jika ada file bukti, tambahkan ke formData
-        if (uploadedFile) {
-            formData.append("file_bukti", uploadedFile as unknown as Blob);
-        }
+        formData.append("file_bukti", uploadedFile as unknown as Blob);
 
         formData.append("kewajaran_penggunaan_kredit", String(searchStringInArray(selectedKewajaranPenggunaanKredit, optionsKewajaranPenggunaanKredit)));
         formData.append("debitur_memiliki_pinjaman_baru", String(selectedDebiturMemilikiPinjamanBaru === "Tidak" ? 0 : 1));
 
         // Jika debitur memiliki pinjaman baru, tambahkan detailnya
-        if (selectedDebiturMemilikiPinjamanBaru === "Ya, sebutkan pinjaman baru tersebut") {
-            formData.append("tujuan_pinjaman", penjelasaanPinjamanBaruDebitur);
-        }
+        formData.append("tujuan_pinjaman", penjelasaanPinjamanBaruDebitur);
 
         formData.append("prospek_usaha", String(searchStringInArray(selectedProspekUsaha, optionsProspekUsaha)));
+
+        console.log(formData)
 
         // Kirim data ke API
         await storeNewHistoryAccountOfficer(props.selectedJatuhTempo?.id as string, formData);
