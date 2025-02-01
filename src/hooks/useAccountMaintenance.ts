@@ -7,7 +7,7 @@ import { HistoryAccountMaintenance } from "@/models/history-account-maintenance-
 
 
 export function useAccountMaintenance(){
-    const [jatuhTempo, setJatuhTempo] = useState<HistoryAccountMaintenance[] | null>()
+    const [jatuhTempo, setJatuhTempo] = useState<AccountMaintenanceModel[] | null>()
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null)
 
@@ -27,7 +27,7 @@ export function useAccountMaintenance(){
                 if(response.status != 200){
                     throw new Error(response.data.message || "Failed to fetch sudah account maintenance")
                 }
-                const data: HistoryAccountMaintenance[] = response.data.data
+                const data: AccountMaintenanceModel[] = response.data.data
                 setJatuhTempo(data)
             } catch (error: unknown) {
                 setError(error instanceof Error ? error.message : "Failed to fetch sudah maintenance")
