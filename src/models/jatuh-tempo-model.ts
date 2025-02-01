@@ -16,4 +16,5 @@ export interface JatuhTempoModel{
     created_at: string,
     updated_at: string,
     debitur: DebiturModel
+    lama_collect: string
 }
