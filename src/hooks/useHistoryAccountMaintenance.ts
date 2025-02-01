@@ -24,6 +24,8 @@ export function useStoreHistoryAccountOfficer(){
                 }
             })
 
+            console.log(response)
+
             if(response.status != 200){
                 throw new Error(response.data.message || "Failed to store new history account officer")
             }
@@ -32,6 +34,7 @@ export function useStoreHistoryAccountOfficer(){
             toast.success("berhasil membuat history account officer", {id: toastId})
         } catch (error: unknown) {
             toast.success("gagal membuat history account officer", {id: toastId})
+            console.log(error);
             setError(error instanceof Error ? error.message : "Failed to store new history account officer")
         } finally {
             setLoading(false)
