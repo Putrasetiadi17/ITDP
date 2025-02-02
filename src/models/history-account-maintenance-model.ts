@@ -6,5 +6,5 @@ export interface HistoryAccountMaintenance
         tanggal_kunjungan : string 
         kesepakatan_awal : string
         deskripsi : string
-        file_bukti : string
+        file_bukti: string
     }

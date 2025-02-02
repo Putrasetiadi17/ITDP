@@ -43,7 +43,7 @@ export default function TableRaportAccountOfficer() {
                                         <th className="py-2 px-4 text-sm font-bold text-gray-700 rounded-l-lg">Debitur</th>
                                         <th className="py-2 px-4 text-sm font-bold text-gray-700">Collect</th>
                                         <th className="py-2 px-4 text-sm font-bold text-gray-700">Total Tagihan</th>
-                                        <th className="py-2 px-4 text-sm font-bold text-gray-700">Status Nasabah</th>
+                                        <th className="py-2 px-4 text-sm font-bold text-gray-700">Status Eksekusi</th>
                                         <th className="py-2 px-4 text-sm font-bold text-gray-700">Pertimbangan</th>
                                         <th className="py-2 px-4 text-sm font-bold text-gray-700">Deskripsi</th>
                                         <th className="py-2 px-4 text-sm font-bold text-gray-700">Tanggal Input</th>

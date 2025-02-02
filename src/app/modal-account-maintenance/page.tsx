@@ -322,7 +322,7 @@ export default function DashboardModalAccountMaintenancePopup(props: DashboardMo
                                 />
                             </div>
                             <div className="flex flex-col gap-3 text-sm">
-                                <p>Upload Document</p>
+                                <p>Upload Bukti</p>
                                 <input
                                     type={"file"}
                                     className="border px-6 py-2 w-full rounded-[12px]"

@@ -1,9 +1,7 @@
-import { JatuhTempoModel } from "@/models/jatuh-tempo-model";
 import api from "@/services/api";
 import { useCookies } from "next-client-cookies";
 import { useEffect, useState } from "react";
 import { AccountMaintenanceModel } from "@/models/account-maintenance-model";
-import { HistoryAccountMaintenance } from "@/models/history-account-maintenance-model";
 
 
 export function useAccountMaintenance(){
