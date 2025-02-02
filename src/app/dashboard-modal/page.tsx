@@ -1,3 +1,5 @@
+'use client'
+
 import React, {ChangeEvent, useState } from "react";
 import Modal from "@/components/modal/modal-popups";
 import { IoWarningOutline } from "react-icons/io5";
