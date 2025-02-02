@@ -8,5 +8,6 @@ export interface HistoryDebiturModels
         status_pembayaran: string,
         pertimbangan: number,
         deskripsi: string,
-        tanggal_pembayaran: string
+        tanggal_pembayaran: string,
+        file_bukti: string
     }

@@ -8,9 +8,7 @@ interface PieChartComponent {
 
 export default function PieChartComponent(props: PieChartComponent) {
 
-  const {
-    progres, loading, error
-  } = useProgress()
+  const { progres, loading, error } = useProgress()
   
   const data = [
     { id: 0, value: progres?.tahap_pengingat || 0, label: "Tahap Pengingat" },

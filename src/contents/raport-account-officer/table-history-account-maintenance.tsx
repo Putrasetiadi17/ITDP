@@ -3,7 +3,6 @@ import { useState } from "react";
 import CircularLoading from "@/components/loading/circular-loading";
 import { AccountMaintenanceModel } from "@/models/account-maintenance-model";
 import { useAccountMaintenance } from "@/hooks/useAccountMaintenance";
-import { Span } from "next/dist/trace";
 
 export default function TableAccountMaintenance() {
     const [isModalOpen, setIsModalOpen] = useState(false);
