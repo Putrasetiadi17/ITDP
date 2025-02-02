@@ -1,4 +1,6 @@
-import React, { ChangeEvent, use, useState } from "react";
+'use client'
+
+import React, { ChangeEvent, useState } from "react";
 import Modal from "@/components/modal/modal-popups";
 import { IoWarningOutline } from "react-icons/io5";
 import { JatuhTempoModel } from "@/models/jatuh-tempo-model";
