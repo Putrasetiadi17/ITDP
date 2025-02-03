@@ -61,7 +61,7 @@ export default function DashboardModalAccountMaintenancePopup(props: DashboardMo
     ]
 
     const optionsKewajaranPenggunaanKredit = [
-        "Pinjaman baru untuk menutupi kesulitan keunagan",
+        "Pinjaman baru untuk menutupi kesulitan keuangan",
         "Pinjaman baru untuk memenuhi kewajiban jatuh tempo"
     ]
 
